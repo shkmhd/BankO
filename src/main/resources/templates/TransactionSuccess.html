@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Transaction Status</title>
+</head>
+<body>
+    <h2 th:case="null">oops! There was an error with the transaction</h2>
+        <div th:case="*">
+            <h2>Transaction Successful!</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Amount</th>
+                        <th>From Account No.</th>
+                        <th>To Account No.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.transactionid}"></td>
+                    <td th:text="${transaction.amount}"></td>
+                    <td th:text="${transaction.fromaccountno}"></td>
+                    <td th:text="${transaction.toaccountno}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+   
+</div>
+</body>
+</html>
