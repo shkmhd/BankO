@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Fund Transfer IMPS Mode</title>
+</head>
+<body>
+<form id="imps" action="/imps">
+<h2>Initiate IMPS Payment</h2>
+<label>From Account-</label>
+	<input type="number" name="frmAcc"/></br>
+<label>To Account-</label>
+	<input type="number" name="toAcc"/></br>
+<label>Amount-</label>
+	<input type="number" name="amt"/></br>
+<label>Transaction Date-</label>
+	<input type="date" name="trnDate"/></br>
+<label>Maturity Instructions-</label>
+	<input type="text" name="matInst"/></br>
+<label>Remark-</label>
+	<input type="text" name="remark"/></br>
+<button type="submit" value="save">Save</button>
+<button type="submit" value="reset">Reset</button>
+<button type="submit" value="saveAsTemplate">Save as Template</button>
+<button type="submit" value="continue">Continue</button>
+</form>
+</body>
+</html>

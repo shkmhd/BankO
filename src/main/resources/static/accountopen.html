@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Open A Savings Account</h2>
+<h2>Personal Details</h2>
+<form id="accountregistration" action="/registrationaccount">
+<label>Title:</label>
+	<select>
+		<option value="Mr">Mr</option>
+		<option value="Mrs">Mrs</option>
+	</select><br/>
+<label>First Name:</label>
+	<input type="text" name="fName"/><br/>
+<label>Middle Name:</label>
+	<input type="text" name="mName"/><br/>
+<label>Last Name:</label>
+	<input type="text" name="lName"/><br/>
+<label>Father's Name:</label>
+	<input type="text" name="fathName"/><br/>
+<label>Mobile Number:</label>
+	<input type="number" name="mobNumber"/><br/>
+<label>Email ID:</label>
+	<input type="text" name="emailId"/><br/>
+<label>Aadhar Card Number:</label>
+	<input type="text" name="adhNumber"/><br/>
+<label>Date of Birth:</label>
+	<input type="date" name="dob"/><br/>
+<h3>Residential Address:</h3>
+<label class="required">a)Address Line1:</label>
+	<input type="text" name="resAddr1"/><br/>
+<label class="required">b)Address Line1:</label>
+	<input type="text" name="resAddr2"/><br/>
+<label>c)State</label>
+ 	<input type="text" name="state"/><br/>
+<label>d)City</label>
+ 	<input type="text" name="city"/><br/>	
+<label>e)PinCode</label>
+ 	<input type="text" name="pincode"/><br/> 
+<h3>Permanent Address:</h3>
+<input type="checkbox"/>Permanent Address same as Mailing Address</br>
+<label class="required">a)Address Line1:</label>
+	<input type="text" name="resAddr1"/><br/>
+<label class="required">b)Address Line1:</label>
+	<input type="text" name="resAddr2"/><br/>
+<label>c)State</label>
+ 	<input type="text" name="state"/><br/>
+<label>d)City</label>
+ 	<input type="text" name="city"/><br/>	
+<label>e)PinCode</label>
+ 	<input type="text" name="pincode"/><br/>
+ <h3>Occupation Details</h3>
+<label class="required">a)Occupation Type:</label>
+	<input type="text" name="occType"/><br/>
+<label class="required">b)Source of Income:</label>
+	<input type="text" name="souofIncome"/><br/>
+<label class="required">c)Gross Annual Income:</label>
+	<input type="text" name="groAnnIncome"/><br/>
+<input type="checkbox"/>I agree</br>
+<button type="submit">Submit</button>
+<style>
+	.required input: after {content :"*";}
+</style>
+</form>
+</body>
+</html>

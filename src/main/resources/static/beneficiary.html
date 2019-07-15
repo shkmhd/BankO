@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css">
+<style type="text/css">
+
+.container{
+		width: 400px;
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+
+</style>
+
+</head>
+<body background="banking.jpg">
+
+<center>
+
+<div class="container">
+<form id="beneficiary" action="/beneficiary">
+
+<div class="form-group">
+
+<h2>Add New Beneficiary</h2><br>
+<div class="form-group">
+<label><h5>Beneficiary Name</h5></label> <br> 
+
+	<input type="text"  class="form-control" id="nme"  name="bName"/><br/> 
+	</div>
+	
+<div class="form-group">
+<label ><h5>Beneficiary Account Number</h5></label> <br> 
+	<input type="number"  class="form-control" id="bacno" name="bAccNo"/><br/>
+</div>
+	
+<div class="form-group">
+<label><h5>Re-Enter Account Number</h5></label><br>
+	<input type="text"  class="form-control" id="reacno"  name="reAccNo"/><br/>
+<input type="checkbox"/><h4>Save Beneficiary</h4><br/> 
+</div>
+
+<div class="form-group">
+<label><h5>Nick Name</h5></label><br>
+	<input type="text"  class="form-control" id="nicknme" name="nicName"/><br/> 
+</div>	
+
+<button type="submit" class="btn btn-primary"">Save As Beneficiary</button>
+
+</button>
+
+</form> </div>
+</body>
+</html>
