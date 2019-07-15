@@ -7,10 +7,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lti.dao.AccountDao;
-import com.lti.dao.TransactionDao;
-import com.lti.entity.Account;
-import com.lti.entity.Transaction;
+import com.bangbank.dao.TransactionDao;
+import com.bangbank.entity.Account;
+import com.bangbank.entity.Transaction;
+import com.bangbank.dao.AccountDao;
+
+
 
 @Service
 public class BankTransactionService {
@@ -25,7 +27,7 @@ public class BankTransactionService {
 		
 		
 	
-		Account acc1 = accDao.fetchById(transaction.getFrmAccNo());
+		Account acc1 = accDao.fetchById(transaction.getFrmAcc().getAccId());
 		Account acc2 = accDao.fetchById(transaction.getToAccNo());
 		
 		if(transaction.getAmt() < acc1.getBalance()) {

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bangbank.service.BankTransactionService;
-import com.lti.entity.Transaction;
+import com.bangbank.entity.Transaction;
 
 @RestController
 @RequestMapping("/Transfer")
-public class TransferController {
+public class TransactionController {
 	
 	@Autowired
 	BankTransactionService bts;
@@ -26,11 +26,11 @@ public class TransferController {
 		
 		if(bts.transfer(transaction,"NEFT")) {
 			
-			model.put("Reference ID", transaction.getTrnId());
+			model.put("Reference ID", transaction.getTransactionId());
 			model.put("Mode", transaction.getMode());
 			model.put("To Account", transaction.getToAccNo());
 			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAccNo());	
+			model.put("From Account", transaction.getFrmAcc());	
 			model.put("Date", transaction.getTrnDate());
 			model.put("Remarks", transaction.getRemarks());
 			
@@ -45,11 +45,11 @@ public class TransferController {
 		
 		if(bts.transfer(transaction,"RTGS")) {
 			
-			model.put("Reference ID", transaction.getTrnId());
+			model.put("Reference ID", transaction.getTransactionId());
 			model.put("Mode", transaction.getMode());
 			model.put("To Account", transaction.getToAccNo());
 			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAccNo());	
+			model.put("From Account", transaction.getFrmAcc());	
 			model.put("Date", transaction.getTrnDate());
 			model.put("Remarks", transaction.getRemarks());
 		
@@ -64,11 +64,11 @@ public class TransferController {
 		
 		if(bts.transfer(transaction,"IMPS")) {
 		
-			model.put("Reference ID", transaction.getTrnId());
+			model.put("Reference ID", transaction.getTransactionId());
 			model.put("Mode", transaction.getMode());
 			model.put("To Account", transaction.getToAccNo());
 			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAccNo());	
+			model.put("From Account", transaction.getFrmAcc());	
 			model.put("Date", transaction.getTrnDate());
 			model.put("Remarks", transaction.getRemarks());
 			

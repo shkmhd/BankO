@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 public abstract class GenericDao {
 
 	@PersistenceContext
-	private EntityManager em;
+	public EntityManager em;
 	
 	@Transactional
 	public <E> E addToDataBase(E obj) {

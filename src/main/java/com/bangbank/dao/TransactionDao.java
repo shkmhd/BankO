@@ -1,4 +1,4 @@
-package com.lti.dao;
+package com.bangbank.dao;
 
 import java.util.List;
 
@@ -6,15 +6,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
-import com.lti.entity.Transaction;
-
 @Component
 public class TransactionDao extends GenericDao{
-
-	
-	
-	
-	
 	/*
 	 * public fetchAllDetails(Class<E> c) {
 	 * 

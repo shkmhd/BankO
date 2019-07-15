@@ -2,6 +2,7 @@ package com.bangbank.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class Transaction {
 	@GeneratedValue
 	private int transactionId;
 	@Column(name = "FROM_ACCOUNT_NUMBER")
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ACCOUNT_NUMBER")
 	private Account frmAcc;
 	@Column(name = "TO_ACCOUNT_NUMBER")

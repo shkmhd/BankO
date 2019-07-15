@@ -48,7 +48,15 @@ import org.hibernate.annotations.GeneratorType;
 		private String permenantAddress;
 		@Column(name = "OCCUPATION")
 		private String occupation;
+		@Column(name = "BALANCE")
+		private double balance;
 		
+		public double getBalance() {
+			return balance;
+		}
+		public void setBalance(double balance) {
+			this.balance = balance;
+		}
 		@OneToMany(mappedBy="account",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 		private Set<Beneficiary> beneficiaries;
 		@OneToMany(mappedBy = "fromAcc" )

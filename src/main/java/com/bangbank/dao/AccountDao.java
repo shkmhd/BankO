@@ -1,12 +1,14 @@
-package com.lti.dao;
+package com.bangbank.dao;
 
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import com.lti.entity.Account;
-import com.lti.entity.Transaction;
+import com.bangbank.entity.Account;
+
 
 public class AccountDao extends GenericDao{
 	
+
 	@Transactional
 	public void addToDatabase(Account acc) {
 		
