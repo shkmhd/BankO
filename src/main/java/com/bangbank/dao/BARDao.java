@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bangbank.entity.Account;
+import com.bangbank.entity.BankAccount;
 import com.bangbank.entity.BankAccountRequest;
 
 public class BARDao extends GenericDao {

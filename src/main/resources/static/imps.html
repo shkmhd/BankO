@@ -9,13 +9,14 @@
 		$("#imps").submit(function(evt){
 			evt.preventDefault();
 			var obj = {
+						frmAccNo : $("#frmAcc").val(),
 						toAccNo : $("#toAcc").val(),
 						amt    : $("#amt").val(),
 						trnDate : $("#trnDate").val()
 						remarks : $("#remark").val()
 			}
 			$.ajax({
-					url         	: '/Transfer/IMPS',
+					url         	: ''/Transfer/IMPS',
 					method	: 'POST',
 					data			: JSON.stringify(obj),	//The Data we want ot Send
 					contentType: 'application/json',
@@ -28,7 +29,7 @@
 </script>
 </head>
 <body>
-<form id="imps" action="/imps">
+<form id="imps" method=POST>
 <h2>Initiate IMPS Payment</h2>
 <label>From Account-</label>
 	<input type="number" name="frmAcc"/>
@@ -43,7 +44,7 @@
 <label>Remark-</label>
 	<input type="text" name="remark"/>
 <button type="submit" value="save">Save</button>
-<button type="submit" value="reset">Reset</button>
+<button type="reset" value="reset">Reset</button>
 <!-- <button type="submit" value="saveAsTemplate">Save as Template</button> -->
 <!-- <button type="submit" value="continue">Continue</button> -->
 </form>

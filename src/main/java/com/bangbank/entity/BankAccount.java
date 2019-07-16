@@ -1,6 +1,6 @@
 package com.bangbank.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,12 +18,12 @@ import org.hibernate.annotations.GeneratorType;
 
 	@Entity
 	@Table(name = "TBL_BANK_ACCOUNT")
-	public class Account {
+	public class BankAccount {
 		
 		@Id
 		@GeneratedValue
 		@Column(name = "ACCOUNT_NUMBER")
-		private long accId;
+		private long accnumber;
 		@Column(name = "TITLE")
 		private String title;
 		@Column(name = "FIRST_NAME")
@@ -35,39 +35,26 @@ import org.hibernate.annotations.GeneratorType;
 		@Column(name = "FATHERS_NAME")
 		private String fatherName;
 		@Column(name = "MOBILE_NO")
-		private int mobileNo;
+		private long mobileNo;
 		@Column(name = "EMAIL")
 		private String emailId;
 		@Column(name = "AADHAR_CARD_NUMBER")
-		private int aadharCardNo;
+		private long aadharCardNo;
 		@Column(name = "DATE_OF_BIRTH")
 		private Date DOB;
 		@Column(name = "RESIDENTIAL_ADDRESS_ID")
-		private String residentialAddress;
+		private Integer residentialAddressid;
 		@Column(name = "PERMENANT_ADDRESS_ID")
-		private String permenantAddress;
+		private Integer permenantAddressid;
 		@Column(name = "OCCUPATION")
 		private String occupation;
 		@Column(name = "BALANCE")
 		private double balance;
-		
-		public double getBalance() {
-			return balance;
+		public long getaccnumber() {
+			return accnumber;
 		}
-		public void setBalance(double balance) {
-			this.balance = balance;
-		}
-		@OneToMany(mappedBy="account",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-		private Set<Beneficiary> beneficiaries;
-		@OneToMany(mappedBy = "frmAcc" )
-		private Set<Transaction> transactions;		
-		@OneToOne
-		OnlineAccount onlineacc;
-		public long getAccId() {
-			return accId;
-		}
-		public void setAccId(long accId) {
-			this.accId = accId;
+		public void setAccId(long accnumber) {
+			this.accnumber = accnumber;
 		}
 		public String getTitle() {
 			return title;
@@ -99,10 +86,10 @@ import org.hibernate.annotations.GeneratorType;
 		public void setFatherName(String fatherName) {
 			this.fatherName = fatherName;
 		}
-		public int getMobileNo() {
+		public long getMobileNo() {
 			return mobileNo;
 		}
-		public void setMobileNo(int mobileNo) {
+		public void setMobileNo(long mobileNo) {
 			this.mobileNo = mobileNo;
 		}
 		public String getEmailId() {
@@ -111,10 +98,10 @@ import org.hibernate.annotations.GeneratorType;
 		public void setEmailId(String emailId) {
 			this.emailId = emailId;
 		}
-		public int getAadharCardNo() {
+		public long getAadharCardNo() {
 			return aadharCardNo;
 		}
-		public void setAadharCardNo(int aadharCardNo) {
+		public void setAadharCardNo(long aadharCardNo) {
 			this.aadharCardNo = aadharCardNo;
 		}
 		public Date getDOB() {
@@ -123,17 +110,17 @@ import org.hibernate.annotations.GeneratorType;
 		public void setDOB(Date dOB) {
 			DOB = dOB;
 		}
-		public String getResidentialAddress() {
-			return residentialAddress;
+		public int getResidentialAddressid() {
+			return residentialAddressid;
 		}
-		public void setResidentialAddress(String residentialAddress) {
-			this.residentialAddress = residentialAddress;
+		public void setResidentialAddressid(int residentialAddressid) {
+			this.residentialAddressid = residentialAddressid;
 		}
-		public String getPermenantAddress() {
-			return permenantAddress;
+		public int getPermenantAddressid() {
+			return permenantAddressid;
 		}
-		public void setPermenantAddress(String permenantAddress) {
-			this.permenantAddress = permenantAddress;
+		public void setPermenantAddressid(int permenantAddressid) {
+			this.permenantAddressid = permenantAddressid;
 		}
 		public String getOccupation() {
 			return occupation;
@@ -141,38 +128,23 @@ import org.hibernate.annotations.GeneratorType;
 		public void setOccupation(String occupation) {
 			this.occupation = occupation;
 		}
-		public Set<Beneficiary> getBeneficiaries() {
-			return beneficiaries;
+		public double getBalance() {
+			return balance;
 		}
-		public void setBeneficiaries(Set<Beneficiary> beneficiaries) {
-			this.beneficiaries = beneficiaries;
-		}
-		public Set<Transaction> getTransactions() {
-			return transactions;
-		}
-		public void setTransactions(Set<Transaction> transactions) {
-			this.transactions = transactions;
-		}
-		public OnlineAccount getOnlineacc() {
-			return onlineacc;
-		}
-		public void setOnlineacc(OnlineAccount onlineacc) {
-			this.onlineacc = onlineacc;
+		public void setBalance(double balance) {
+			this.balance = balance;
 		}
 		@Override
 		public String toString() {
-			return "Account [accId=" + accId + ", title=" + title + ", firstName=" + firstName + ", middleName="
+			return "Account [accId=" + accnumber + ", title=" + title + ", firstName=" + firstName + ", middleName="
 					+ middleName + ", lastName=" + lastName + ", fatherName=" + fatherName + ", mobileNo=" + mobileNo
-					+ ", emailId=" + emailId + ", aadharCardNo=" + aadharCardNo + ", DOB=" + DOB
-					+ ", residentialAddress=" + residentialAddress + ", permenantAddress=" + permenantAddress
-					+ ", occupation=" + occupation + ", beneficiaries=" + beneficiaries + ", transactions="
-					+ transactions + ", onlineacc=" + onlineacc + "]";
+					+ ", emailId=" + emailId + ", aadharCardNo=" + aadharCardNo + ", DOB=" + DOB + ", occupation="
+					+ occupation + ", balance=" + balance + "]";
 		}
-		public Account(long accId, String title, String firstName, String middleName, String lastName,
-				String fatherName, int mobileNo, String emailId, int aadharCardNo, Date dOB, String residentialAddress,
-				String permenantAddress, String occupation, Set<Beneficiary> beneficiaries,
-				Set<Transaction> transactions, OnlineAccount onlineacc) {
-			this.accId = accId;
+		public BankAccount(long accId, String title, String firstName, String middleName, String lastName,
+				String fatherName, long mobileNo, String emailId, long aadharCardNo, Date dOB, int residentialAddressid,
+				int permenantAddressid, String occupation, double balance) {
+			this.accnumber = accnumber;
 			this.title = title;
 			this.firstName = firstName;
 			this.middleName = middleName;
@@ -182,16 +154,14 @@ import org.hibernate.annotations.GeneratorType;
 			this.emailId = emailId;
 			this.aadharCardNo = aadharCardNo;
 			DOB = dOB;
-			this.residentialAddress = residentialAddress;
-			this.permenantAddress = permenantAddress;
+			this.residentialAddressid = residentialAddressid;
+			this.permenantAddressid = permenantAddressid;
 			this.occupation = occupation;
-			this.beneficiaries = beneficiaries;
-			this.transactions = transactions;
-			this.onlineacc = onlineacc;
+			this.balance = balance;
 		}
-		public Account() {
+		public BankAccount() {
 		}
-		
+				
 	}
 
 

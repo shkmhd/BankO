@@ -28,7 +28,7 @@ public class Beneficiary {
 	private String lastName;
 	@ManyToOne
 	@JoinColumn(name = "ACCOUNT_NUMBER")
-	private Account account;
+	private BankAccount bankAccount;
 	@Column(name = "NICK_NAME")
 	private String nickName;
 	public int getBeneficiaryId() {
@@ -61,11 +61,11 @@ public class Beneficiary {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Account getAccount() {
-		return account;
+	public BankAccount getAccount() {
+		return bankAccount;
 	}
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
 	}
 	public String getNickName() {
 		return nickName;
@@ -76,18 +76,18 @@ public class Beneficiary {
 	@Override
 	public String toString() {
 		return "Beneficiary [beneficiaryId=" + beneficiaryId + ", title=" + title + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName + ", account=" + account + ", nickName="
+				+ ", middleName=" + middleName + ", lastName=" + lastName + ", account=" + bankAccount + ", nickName="
 				+ nickName + "]";
 	}
 	public Beneficiary(int beneficiaryId, String title, String firstName, String middleName, String lastName,
-			Account account, String nickName) {
+			BankAccount bankAccount, String nickName) {
 		super();
 		this.beneficiaryId = beneficiaryId;
 		this.title = title;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
-		this.account = account;
+		this.bankAccount = bankAccount;
 		this.nickName = nickName;
 	}
 	public Beneficiary() {

@@ -5,8 +5,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class TransactionDao extends GenericDao{
 	/*
 	 * public fetchAllDetails(Class<E> c) {

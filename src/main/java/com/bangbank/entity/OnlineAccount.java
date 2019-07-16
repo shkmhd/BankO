@@ -29,7 +29,7 @@ public class OnlineAccount {
 	/* @Column(name = "ACCOUNT_NUMBER") */
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ACCOUNT_NUMBER")
-	private Account account;
+	private BankAccount bankAccount;
 
 
 	public int getOnlineAccId() {
@@ -72,13 +72,13 @@ public class OnlineAccount {
 	}
 
 
-	public Account getAccount() {
-		return account;
+	public BankAccount getAccount() {
+		return bankAccount;
 	}
 
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
 	}
 
 

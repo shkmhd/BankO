@@ -11,8 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.bangbank.dto.TransactionDTO;
+
 @Entity
-@Table(name = "Transaction_TBL")
+@Table(name = "TBL_TRANSACTION")
 public class Transaction {
 
 	@Id
@@ -21,7 +23,7 @@ public class Transaction {
 	/* @Column(name = "FROM_ACCOUNT_NUMBER") */
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ACCOUNT_NUMBER")
-	private Account frmAcc;
+	private BankAccount frmAcc;
 	@Column(name = "TO_ACCOUNT_NUMBER")
 	private long toAccNo;
 	@Column(name = "AMOUNT")
@@ -38,10 +40,10 @@ public class Transaction {
 	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
-	public Account getFrmAcc() {
+	public BankAccount getFrmAcc() {
 		return frmAcc;
 	}
-	public void setFrmAcc(Account frmAcc) {
+	public void setFrmAcc(BankAccount frmAcc) {
 		this.frmAcc = frmAcc;
 	}
 	public long getToAccNo() {
@@ -79,7 +81,7 @@ public class Transaction {
 		return "Transaction [transactionId=" + transactionId + ", frmAcc=" + frmAcc + ", toAccNo=" + toAccNo + ", amt="
 				+ amt + ", trnDate=" + trnDate + ", mode=" + mode + ", remarks=" + remarks + "]";
 	}
-	public Transaction(int transactionId, Account frmAcc, long toAccNo, double amt, Date trnDate, String mode,
+	public Transaction(int transactionId, BankAccount frmAcc, long toAccNo, double amt, Date trnDate, String mode,
 			String remarks) {
 		
 		this.transactionId = transactionId;
@@ -90,7 +92,19 @@ public class Transaction {
 		this.mode = mode;
 		this.remarks = remarks;
 	}
+	public Transaction(BankAccount frmAcc, long toAccNo, double amt, Date trnDate, String mode,
+			String remarks) {
+		this.frmAcc = frmAcc;
+		this.toAccNo = toAccNo;
+		this.amt = amt;
+		this.trnDate = trnDate;
+		this.mode = mode;
+		this.remarks = remarks;
+	}
 	public Transaction() {
+	}
+	public Transaction(TransactionDTO td,BankAccount frmAcc) {
+		this(frmAcc,td.getToAccNo(),td.getAmt(),td.getTrnDate(),td.getMode(),td.getRemarks());
 	}
 	
 	

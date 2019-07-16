@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bangbank.service.BankTransactionService;
+import com.bangbank.dto.TransactionDTO;
 import com.bangbank.entity.Transaction;
 
 @RestController
@@ -23,15 +24,15 @@ public class TransactionController {
 	BankTransactionService bts;
 	
 	@RequestMapping(path = "/NEFT",method = RequestMethod.POST)
-	public ModelAndView neftTransaction(Map<String,Object> model,Transaction transaction) {
+	public ModelAndView neftTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
 		
 		if(bts.transfer(transaction,"NEFT")) {
 			
-			model.put("Reference ID", transaction.getTransactionId());
+			/* model.put("Reference ID", transaction.getTransactionId()); */
 			model.put("Mode", transaction.getMode());
 			model.put("To Account", transaction.getToAccNo());
 			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAcc());	
+			model.put("From Account", transaction.getFrmAccNo());	
 			model.put("Date", transaction.getTrnDate());
 			model.put("Remarks", transaction.getRemarks());
 			
@@ -42,15 +43,15 @@ public class TransactionController {
 	}
 	
 	@RequestMapping(path = "/RTGS",method = RequestMethod.POST)
-	public ModelAndView rtgsTransaction(Map<String,Object> model,Transaction transaction) {
+	public ModelAndView rtgsTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
 		
 		if(bts.transfer(transaction,"RTGS")) {
 			
-			model.put("Reference ID", transaction.getTransactionId());
+			/* model.put("Reference ID", transaction.getTransactionId()); */
 			model.put("Mode", transaction.getMode());
 			model.put("To Account", transaction.getToAccNo());
 			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAcc());	
+			model.put("From Account", transaction.getFrmAccNo());	
 			model.put("Date", transaction.getTrnDate());
 			model.put("Remarks", transaction.getRemarks());
 		
@@ -61,15 +62,15 @@ public class TransactionController {
 	}
 	
 	@RequestMapping(path = "/IMPS",method = RequestMethod.POST)
-	public ModelAndView impsTransaction(Map<String,Object> model,Transaction transaction) {
+	public ModelAndView impsTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
 		
 		if(bts.transfer(transaction,"IMPS")) {
 		
-			model.put("Reference ID", transaction.getTransactionId());
+			/* model.put("Reference ID", transaction.getTransactionId()); */
 			model.put("Mode", transaction.getMode());
 			model.put("To Account", transaction.getToAccNo());
 			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAcc());	
+			model.put("From Account", transaction.getFrmAccNo());	
 			model.put("Date", transaction.getTrnDate());
 			model.put("Remarks", transaction.getRemarks());
 			
