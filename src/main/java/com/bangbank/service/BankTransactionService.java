@@ -17,11 +17,15 @@ import com.bangbank.dao.AccountDao;
 @Service
 public class BankTransactionService {
 
-	@Autowired
-	private TransactionDao txnDao;
+	/*
+	 * @Autowired private TransactionDao txnDao;
+	 */
+	TransactionDao txnDao=new TransactionDao();
 	
-	@Autowired
-	private AccountDao accDao; 
+	/*
+	 * @Autowired private AccountDao accDao;
+	 */
+	private AccountDao accDao=new AccountDao();
 	@Transactional
 	public boolean transfer(Transaction transaction,String TransactionMode) {	
 		

@@ -18,7 +18,7 @@ public class Transaction {
 	@Id
 	@GeneratedValue
 	private int transactionId;
-	@Column(name = "FROM_ACCOUNT_NUMBER")
+	/* @Column(name = "FROM_ACCOUNT_NUMBER") */
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ACCOUNT_NUMBER")
 	private Account frmAcc;

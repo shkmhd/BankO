@@ -7,6 +7,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +22,7 @@ public class TransactionController {
 	@Autowired
 	BankTransactionService bts;
 	
-	@RequestMapping("/NEFT")
+	@RequestMapping(path = "/NEFT",method = RequestMethod.POST)
 	public ModelAndView neftTransaction(Map<String,Object> model,Transaction transaction) {
 		
 		if(bts.transfer(transaction,"NEFT")) {
@@ -40,7 +41,7 @@ public class TransactionController {
 			return new ModelAndView("forward:/TransactionFailed.html", model);
 	}
 	
-	@RequestMapping("/RTGS")
+	@RequestMapping(path = "/RTGS",method = RequestMethod.POST)
 	public ModelAndView rtgsTransaction(Map<String,Object> model,Transaction transaction) {
 		
 		if(bts.transfer(transaction,"RTGS")) {
@@ -59,7 +60,7 @@ public class TransactionController {
 			return new ModelAndView("forward:/TransactionFailed.html", model);
 	}
 	
-	@RequestMapping("/IMPS")
+	@RequestMapping(path = "/IMPS",method = RequestMethod.POST)
 	public ModelAndView impsTransaction(Map<String,Object> model,Transaction transaction) {
 		
 		if(bts.transfer(transaction,"IMPS")) {

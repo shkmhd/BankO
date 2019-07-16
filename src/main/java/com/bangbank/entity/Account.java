@@ -59,7 +59,7 @@ import org.hibernate.annotations.GeneratorType;
 		}
 		@OneToMany(mappedBy="account",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 		private Set<Beneficiary> beneficiaries;
-		@OneToMany(mappedBy = "fromAcc" )
+		@OneToMany(mappedBy = "frmAcc" )
 		private Set<Transaction> transactions;		
 		@OneToOne
 		OnlineAccount onlineacc;

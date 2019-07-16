@@ -26,9 +26,8 @@ public class OnlineAccount {
 	@Column(name = "LAST_LOGIN")
 	private Date lastLogin;
 	
-	
+	/* @Column(name = "ACCOUNT_NUMBER") */
 	@OneToOne(cascade = CascadeType.ALL)
-	@Column(name = "ACCOUNT_NUMBER")
 	@JoinColumn(name = "ACCOUNT_NUMBER")
 	private Account account;
 
