@@ -1,10 +1,13 @@
-package com.lti.entity;
+package com.bangbank.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,28 +16,32 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue
-	private int trnId;
-	
-	private long frmAccNo;
+	private int transactionId;
+	@Column(name = "FROM_ACCOUNT_NUMBER")
+	@ManyToOne
+	@JoinColumn(name = "ACCOUNT_NUMBER")
+	private Account frmAcc;
+	@Column(name = "TO_ACCOUNT_NUMBER")
 	private long toAccNo;
+	@Column(name = "AMOUNT")
 	private double amt;
+	@Column(name = "TRANSACTION_DATE")
 	private Date trnDate;
+	@Column(name = "TRANSACTION_MODE")
 	private String mode;
+	@Column(name = "TRANSACTION_REMARKS")
 	private String remarks;
-	/*
-	 * private enum Mode{ NEFT, IMPS, RTGS }
-	 */
-	public int getTrnId() {
-		return trnId;
+	public int getTransactionId() {
+		return transactionId;
 	}
-	public void setTrnId(int trnId) {
-		this.trnId = trnId;
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
 	}
-	public long getFrmAccNo() {
-		return frmAccNo;
+	public Account getFrmAcc() {
+		return frmAcc;
 	}
-	public void setFrmAccNo(long frmAccNo) {
-		this.frmAccNo = frmAccNo;
+	public void setFrmAcc(Account frmAcc) {
+		this.frmAcc = frmAcc;
 	}
 	public long getToAccNo() {
 		return toAccNo;
@@ -68,17 +75,14 @@ public class Transaction {
 	}
 	@Override
 	public String toString() {
-		return "Transaction [trnId=" + trnId + ", frmAccNo=" + frmAccNo + ", toAccNo=" + toAccNo + ", amt=" + amt
-				+ ", trnDate=" + trnDate + ", mode=" + mode + ", remarks=" + remarks + ", getTrnId()=" + getTrnId()
-				+ ", getFrmAccNo()=" + getFrmAccNo() + ", getToAccNo()=" + getToAccNo() + ", getAmt()=" + getAmt()
-				+ ", getTrnDate()=" + getTrnDate() + ", getMode()=" + getMode() + ", getRemarks()=" + getRemarks()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+		return "Transaction [transactionId=" + transactionId + ", frmAcc=" + frmAcc + ", toAccNo=" + toAccNo + ", amt="
+				+ amt + ", trnDate=" + trnDate + ", mode=" + mode + ", remarks=" + remarks + "]";
 	}
-	public Transaction(int trnId, long frmAccNo, long toAccNo, double amt, Date trnDate, String mode, String remarks) {
-		super();
-		this.trnId = trnId;
-		this.frmAccNo = frmAccNo;
+	public Transaction(int transactionId, Account frmAcc, long toAccNo, double amt, Date trnDate, String mode,
+			String remarks) {
+		
+		this.transactionId = transactionId;
+		this.frmAcc = frmAcc;
 		this.toAccNo = toAccNo;
 		this.amt = amt;
 		this.trnDate = trnDate;
@@ -86,7 +90,6 @@ public class Transaction {
 		this.remarks = remarks;
 	}
 	public Transaction() {
-		super();
 	}
 	
 	

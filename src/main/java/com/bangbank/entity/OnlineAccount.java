@@ -1,7 +1,9 @@
-package com.lti.entity;
+package com.bangbank.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,16 +17,20 @@ public class OnlineAccount {
 	
 	@Id
 	@GeneratedValue
+	@Column(name ="ONLINE_ID")
 	private int onlineAccId;
-	
+	@Column(name = "LOGIN_PASSWORD")
 	private String loginPassword;
+	@Column(name = "TRANSACTION_PASSWORD")
 	private String TransactionPassword;
+	@Column(name = "LAST_LOGIN")
 	private Date lastLogin;
 	
 	
-	@OneToOne
-	@JoinColumn(name = "accId")
-	private long accountNumber;
+	@OneToOne(cascade = CascadeType.ALL)
+	@Column(name = "ACCOUNT_NUMBER")
+	@JoinColumn(name = "ACCOUNT_NUMBER")
+	private Account account;
 
 
 	public int getOnlineAccId() {
@@ -67,35 +73,22 @@ public class OnlineAccount {
 	}
 
 
-	public long getAccountNumber() {
-		return accountNumber;
+	public Account getAccount() {
+		return account;
 	}
 
 
-	public void setAccountNumber(long accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 
-	@Override
-	public String toString() {
-		return "OnlineAccount [onlineAccId=" + onlineAccId + ", loginPassword=" + loginPassword
-				+ ", TransactionPassword=" + TransactionPassword + ", lastLogin=" + lastLogin + ", accountNumber="
-				+ accountNumber + ", getOnlineAccId()=" + getOnlineAccId() + ", getLoginPassword()="
-				+ getLoginPassword() + ", getTransactionPassword()=" + getTransactionPassword() + ", getLastLogin()="
-				+ getLastLogin() + ", getAccountNumber()=" + getAccountNumber() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
-	}
-
-
-	public OnlineAccount(int onlineAccId, String loginPassword, String transactionPassword, Date lastLogin,
-			long accountNumber) {
+	public OnlineAccount(int onlineAccId, String loginPassword, String transactionPassword, Date lastLogin) {
 		super();
 		this.onlineAccId = onlineAccId;
 		this.loginPassword = loginPassword;
 		TransactionPassword = transactionPassword;
 		this.lastLogin = lastLogin;
-		this.accountNumber = accountNumber;
 	}
 
 
@@ -104,7 +97,7 @@ public class OnlineAccount {
 	}
 	
 	
-	
+
 	
 	
 

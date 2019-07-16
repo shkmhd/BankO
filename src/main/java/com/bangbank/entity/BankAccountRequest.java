@@ -1,7 +1,8 @@
-package com.lti.entity;
+package com.bangbank.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,22 +12,43 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="bank_account_table")
+@Table(name="TBL_BANK_ACCOUNT_REQUEST")
 public class BankAccountRequest {
-	
+	@Id
+	@Column(name = "RequestId")
+	private int BARid;
+	@Column(name = "TITLE")
 	private String title;
+	@Column(name = "FIRST_NAME")
 	private String firstName;
+	@Column(name = "MIDDLE_NAME")
 	private String middleName;
+	@Column(name = "LAST_NAME")
 	private String lastName;
+	@Column(name = "FATHERS_NAME")
 	private String fatherName;
+	@Column(name = "MOBILE_NO")
 	private int mobileNo;
+	@Column(name = "EMAIL")
 	private String emailId;
+	@Column(name = "AADHAR_CARD_NUMBER")
 	private int aadharCardNo;
+	@Column(name = "DATE_OF_BIRTH")
 	private Date DOB;
+	@Column(name = "RESIDENTIAL_ADDRESS_ID")
 	private String residentialAddress;
+	@Column(name = "PERMENANT_ADDRESS_ID")
 	private String permenantAddress;
-	private String occupationDetails;
+	@Column(name = "OCCUPATION")
+	private String occupation;
+	@Column(name = "APPROVED")
 	private String Approved;
+	public int getBARid() {
+		return BARid;
+	}
+	public void setBARid(int bARid) {
+		BARid = bARid;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -93,11 +115,11 @@ public class BankAccountRequest {
 	public void setPermenantAddress(String permenantAddress) {
 		this.permenantAddress = permenantAddress;
 	}
-	public String getOccupationDetails() {
-		return occupationDetails;
+	public String getOccupation() {
+		return occupation;
 	}
-	public void setOccupationDetails(String occupationDetails) {
-		this.occupationDetails = occupationDetails;
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
 	}
 	public String getApproved() {
 		return Approved;
@@ -105,18 +127,11 @@ public class BankAccountRequest {
 	public void setApproved(String approved) {
 		Approved = approved;
 	}
-	@Override
-	public String toString() {
-		return "BankAccountRequest [title=" + title + ", firstName=" + firstName + ", middleName=" + middleName
-				+ ", lastName=" + lastName + ", fatherName=" + fatherName + ", mobileNo=" + mobileNo + ", emailId="
-				+ emailId + ", aadharCardNo=" + aadharCardNo + ", DOB=" + DOB + ", residentialAddress="
-				+ residentialAddress + ", permenantAddress=" + permenantAddress + ", occupationDetails="
-				+ occupationDetails + ", Approved=" + Approved + "]";
-	}
-	public BankAccountRequest(String title, String firstName, String middleName, String lastName, String fatherName,
-			int mobileNo, String emailId, int aadharCardNo, Date dOB, String residentialAddress,
-			String permenantAddress, String occupationDetails, String approved) {
+	public BankAccountRequest(int bARid, String title, String firstName, String middleName, String lastName,
+			String fatherName, int mobileNo, String emailId, int aadharCardNo, Date dOB, String residentialAddress,
+			String permenantAddress, String occupation, String approved) {
 		super();
+		BARid = bARid;
 		this.title = title;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -128,21 +143,20 @@ public class BankAccountRequest {
 		DOB = dOB;
 		this.residentialAddress = residentialAddress;
 		this.permenantAddress = permenantAddress;
-		this.occupationDetails = occupationDetails;
+		this.occupation = occupation;
 		Approved = approved;
 	}
 	public BankAccountRequest() {
 		super();
 	}
-	
-	
-	
-	
-		
-		
-	
-	
-	
+	@Override
+	public String toString() {
+		return "BankAccountRequest [BARid=" + BARid + ", title=" + title + ", firstName=" + firstName + ", middleName="
+				+ middleName + ", lastName=" + lastName + ", fatherName=" + fatherName + ", mobileNo=" + mobileNo
+				+ ", emailId=" + emailId + ", aadharCardNo=" + aadharCardNo + ", DOB=" + DOB + ", residentialAddress="
+				+ residentialAddress + ", permenantAddress=" + permenantAddress + ", occupation=" + occupation
+				+ ", Approved=" + Approved + "]";
+	}
 	
 
 }

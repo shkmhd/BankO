@@ -15,7 +15,7 @@ import com.bangbank.service.BankTransactionService;
 
 @RestController
 @RequestMapping("/Transfer")
-public class TransferController {
+public class TransactionController {
 	@Autowired
 	BankTransactionService bts;
 	@RequestMapping("/NEFT")
