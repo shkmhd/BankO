@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,7 +28,7 @@ public class OnlineAccount {
 	private Date lastLogin;
 	
 	/* @Column(name = "ACCOUNT_NUMBER") */
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "ACCOUNT_NUMBER")
 	private BankAccount bankAccount;
 
@@ -79,6 +80,14 @@ public class OnlineAccount {
 
 	public void setAccount(BankAccount bankAccount) {
 		this.bankAccount = bankAccount;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "OnlineAccount [onlineAccId=" + onlineAccId + ", loginPassword=" + loginPassword
+				+ ", TransactionPassword=" + TransactionPassword + ", lastLogin=" + lastLogin + ", bankAccount="
+				+ bankAccount + "]";
 	}
 
 

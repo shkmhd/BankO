@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+ <script>
+$(function(){
+	$("#login").submit(function(evt){
+		
+		evt.preventDefault();
+		
+		var accountNo = $("#accno").val();
+		var password = $("#password").val();
+		
+		
+		var url = '/Login?accno='+accountNo//+'&password='+password;
+		$.ajax({
+				url:url,
+				method:'GET',
+				dataType : 'json',
+				
+				success:function(response){
+					
+					alert(response.password);	//Just For Testing
+					
+					if(response.password == password)
+						
+						window.location.replace("dashboard.html");
+					
+					else
+						alert("Wrong password !!");
+				}
+		})
+	})
+})
+
+</script>
+
+</head>
+<body>
+<div class="jumbotron text-center">
+<form id="login">
+<div class="alert alert-light" role="alert">
+<h1>Login to your Account</h1><br/><br/>
+
+<label>User ID:</label>
+		<input type="number" placeholder="Enter Account no"  id="accno"  required/><br/><br/>
+<label>Password:</label>
+		<input type="password" placeholder="Enter password" id="password" required/><br/></div>
+<button type="submit" class="btn btn-primary">Login</button><br/><br/>
+<a href="register.html">First Time User? register</a><br/>
+<a href="ForgetUserID.html">Forget User ID</a><br/>
+<a href="forgetpassword.html">First Time User? register</a><br/>
+</form>
+</div>
+
+</body>
+
+</html>

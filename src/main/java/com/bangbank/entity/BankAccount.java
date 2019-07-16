@@ -50,6 +50,26 @@ import org.hibernate.annotations.GeneratorType;
 		private String occupation;
 		@Column(name = "BALANCE")
 		private double balance;
+		@OneToOne(mappedBy = "bankAccount")
+		private OnlineAccount oa;
+		public long getAccnumber() {
+			return accnumber;
+		}
+		public void setAccnumber(long accnumber) {
+			this.accnumber = accnumber;
+		}
+		public OnlineAccount getOa() {
+			return oa;
+		}
+		public void setOa(OnlineAccount oa) {
+			this.oa = oa;
+		}
+		public void setResidentialAddressid(Integer residentialAddressid) {
+			this.residentialAddressid = residentialAddressid;
+		}
+		public void setPermenantAddressid(Integer permenantAddressid) {
+			this.permenantAddressid = permenantAddressid;
+		}
 		public long getaccnumber() {
 			return accnumber;
 		}
@@ -136,14 +156,17 @@ import org.hibernate.annotations.GeneratorType;
 		}
 		@Override
 		public String toString() {
-			return "Account [accId=" + accnumber + ", title=" + title + ", firstName=" + firstName + ", middleName="
-					+ middleName + ", lastName=" + lastName + ", fatherName=" + fatherName + ", mobileNo=" + mobileNo
-					+ ", emailId=" + emailId + ", aadharCardNo=" + aadharCardNo + ", DOB=" + DOB + ", occupation="
-					+ occupation + ", balance=" + balance + "]";
+			return "BankAccount [accnumber=" + accnumber + ", title=" + title + ", firstName=" + firstName
+					+ ", middleName=" + middleName + ", lastName=" + lastName + ", fatherName=" + fatherName
+					+ ", mobileNo=" + mobileNo + ", emailId=" + emailId + ", aadharCardNo=" + aadharCardNo + ", DOB="
+					+ DOB + ", residentialAddressid=" + residentialAddressid + ", permenantAddressid="
+					+ permenantAddressid + ", occupation=" + occupation + ", balance=" + balance + ", oa=" + oa + "]";
 		}
-		public BankAccount(long accId, String title, String firstName, String middleName, String lastName,
-				String fatherName, long mobileNo, String emailId, long aadharCardNo, Date dOB, int residentialAddressid,
-				int permenantAddressid, String occupation, double balance) {
+		public BankAccount(long accnumber, String title, String firstName, String middleName, String lastName,
+				String fatherName, long mobileNo, String emailId, long aadharCardNo, Date dOB,
+				Integer residentialAddressid, Integer permenantAddressid, String occupation, double balance,
+				OnlineAccount oa) {
+			super();
 			this.accnumber = accnumber;
 			this.title = title;
 			this.firstName = firstName;
@@ -158,9 +181,12 @@ import org.hibernate.annotations.GeneratorType;
 			this.permenantAddressid = permenantAddressid;
 			this.occupation = occupation;
 			this.balance = balance;
+			this.oa = oa;
 		}
 		public BankAccount() {
+			super();
 		}
+		
 				
 	}
 
