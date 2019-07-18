@@ -13,9 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Online_Account_Table")
+@Table(name="TBL_ONLINE_ACCOUNT")
 public class OnlineAccount {
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name ="ONLINE_ID")
@@ -79,6 +79,15 @@ public class OnlineAccount {
 
 
 	public void setAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+	
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+
+
+	public void setBankAccount(BankAccount bankAccount) {
 		this.bankAccount = bankAccount;
 	}
 	

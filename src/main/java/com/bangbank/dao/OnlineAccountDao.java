@@ -1,10 +1,13 @@
 package com.bangbank.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
+import com.bangbank.entity.AdminAccount;
 import com.bangbank.entity.OnlineAccount;
 
 
@@ -16,10 +19,18 @@ public class OnlineAccountDao extends GenericDao  {
 	
 	public OnlineAccount fetchOA(long accNo) {
 		
-		OnlineAccount oa =  (OnlineAccount)entityManager.createQuery
-									 ("select a from OnlineAccount a where a.bankAccount.accnumber= :em").setParameter("em", accNo)
-									 .getSingleResult();
-		return oa;
+		List<OnlineAccount> results = em.createQuery("select oa from OnlineAccount oa where oa.bankAccount.accnumber= :em").setParameter("em", accNo).getResultList();
+		if (results.isEmpty()) {
+			return null; 
+		} else {
+			return results.get(0);
+		}
+		 //("select oa from BankAccount a inner join a.oa oa where a.accnumber= :em").setParameter("em", accNo)
+		/*
+		 * System.out.println("password is:" +oa.getLoginPassword());
+		 * System.out.println("======> " + accNo);
+		 */
+	
 	}
 
 }

@@ -7,22 +7,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bangbank.dto.OnlineAccountDto;
+import com.bangbank.dto.VerificationStatusDto;
+import com.bangbank.entity.AdminAccount;
 import com.bangbank.entity.OnlineAccount;
 import com.bangbank.service.LoginService;
 
 @RestController
-public class loginController {
+@RequestMapping("/Login")
+public class LoginController {
 	
 	@Autowired
 	private LoginService loginService;
 	
-	@RequestMapping(path = "/Login", method=RequestMethod.POST)
-	public boolean fetch(@RequestBody OnlineAccount oa) {
+	@RequestMapping(path = "/User", method=RequestMethod.POST)
+	public VerificationStatusDto fetch(@RequestBody OnlineAccountDto oadto) {
 		
 		System.out.println("Controller is called");
 		
 		/* String passWord = loginService.showSearch(accNo); */
-		return loginService.passwordValidation(oa);
+		return loginService.passwordValidation(oadto);
+			
+	}
+	@RequestMapping(path = "/Admin", method=RequestMethod.POST)
+	public VerificationStatusDto fetchAdmin(@RequestBody AdminAccount aa) {
+		
+		System.out.println("Controller is called");
+		
+		/* String passWord = loginService.showSearch(accNo); */
+		return loginService.AdminPasswordValidation(aa);
 			
 	}
 }

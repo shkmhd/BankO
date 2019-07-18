@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Login</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+	$(function() {
+		$("#adminform").submit(function(evt) {
+
+			evt.preventDefault();
+			var obj = {
+				username : $("#usrname").val(),
+				password : $("#password").val()
+			}
+			$.ajax({
+				url : '/Login/Admin',
+				type : 'POST',
+				data : JSON.stringify(obj),
+				contentType : 'application/json',
+				success : function(response) {
+
+					if (response.stat=="true")
+						window.location.replace("admindashboard.html");
+					else
+						alert("Incorrect");
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<form id="adminform">
+			<div class="alert alert-light" role="alert">
+				<h1>Admin Login</h1>
+				<br />
+				<br /> <label>Username:</label> <input type="name"
+					placeholder="Enter Username" id="usrname" required /><br />
+				<br /> <label>Password:</label> <input type="password"
+					placeholder="Enter password" id="password" required /><br />
+			</div>
+			<button type="submit" class="btn btn-primary">Login</button>
+			<br />
+			<br />
+		</form>
+	</div>
+</body>
+</html>
