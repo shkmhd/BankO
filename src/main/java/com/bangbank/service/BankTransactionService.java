@@ -30,7 +30,7 @@ public class BankTransactionService {
 	@Autowired
 	private AccountDao accDao;
 	
-	public boolean transfer(TransactionDTO transaction,String TransactionMode) {	
+	public TransactionDTO transfer(TransactionDTO transaction,String TransactionMode) {	
 		
 		
 	
@@ -42,7 +42,8 @@ public class BankTransactionService {
 		if(transaction.getAmt() > acc1.getBalance()) {
 
 			System.out.println("Sorry!No Sufficient Funds are available");
-			return false;
+			transaction.setTrnStat("failed");
+			return transaction;
 		
 		}
 		
@@ -51,17 +52,15 @@ public class BankTransactionService {
 			acc1.setBalance(acc1.getBalance() - transaction.getAmt());
 			acc2.setBalance(acc2.getBalance() + transaction.getAmt());
 			
-			System.out.println("Transaction Successful");
-			
 			accDao.addToDataBase(acc1);
 			accDao.addToDataBase(acc2);
 			
 			transaction.setMode(TransactionMode);
-			
 			Transaction dbtxn=new Transaction(transaction,acc1);
-			txnDao.addToDataBase(dbtxn);
-			
-			return true;
+			Transaction dbtxnreturned=txnDao.addToDataBase(dbtxn);
+			transaction.setTransactionID(dbtxnreturned.getTransactionId());
+			transaction.setTrnStat("Succesful");
+			return transaction;
 			
 			
 			}

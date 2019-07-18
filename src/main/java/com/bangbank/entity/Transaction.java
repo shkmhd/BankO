@@ -34,11 +34,20 @@ public class Transaction {
 	private String mode;
 	@Column(name = "TRANSACTION_REMARKS")
 	private String remarks;
+	@Column(name="MATURITY_INSTRUCTIONS")
+	private String matInst;
 	public int getTransactionId() {
 		return transactionId;
 	}
 	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
+	}
+	
+	public String getMatInst() {
+		return matInst;
+	}
+	public void setMatInst(String matInst) {
+		this.matInst = matInst;
 	}
 	public BankAccount getFrmAcc() {
 		return frmAcc;
@@ -76,13 +85,15 @@ public class Transaction {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+	
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", frmAcc=" + frmAcc + ", toAccNo=" + toAccNo + ", amt="
-				+ amt + ", trnDate=" + trnDate + ", mode=" + mode + ", remarks=" + remarks + "]";
+				+ amt + ", trnDate=" + trnDate + ", mode=" + mode + ", remarks=" + remarks + ", matInst=" + matInst
+				+ "]";
 	}
 	public Transaction(int transactionId, BankAccount frmAcc, long toAccNo, double amt, Date trnDate, String mode,
-			String remarks) {
+			String remarks, String matInst) {
 		
 		this.transactionId = transactionId;
 		this.frmAcc = frmAcc;
@@ -91,20 +102,22 @@ public class Transaction {
 		this.trnDate = trnDate;
 		this.mode = mode;
 		this.remarks = remarks;
+		this.matInst=matInst;
 	}
 	public Transaction(BankAccount frmAcc, long toAccNo, double amt, Date trnDate, String mode,
-			String remarks) {
+			String remarks,String matInst) {
 		this.frmAcc = frmAcc;
 		this.toAccNo = toAccNo;
 		this.amt = amt;
 		this.trnDate = trnDate;
 		this.mode = mode;
 		this.remarks = remarks;
+		this.matInst=matInst;
 	}
 	public Transaction() {
 	}
 	public Transaction(TransactionDTO td,BankAccount frmAcc) {
-		this(frmAcc,td.getToAccNo(),td.getAmt(),td.getTrnDate(),td.getMode(),td.getRemarks());
+		this(frmAcc,td.getToAccNo(),td.getAmt(),td.getTrnDate(),td.getMode(),td.getRemarks(),td.getMatInst());
 	}
 	
 	

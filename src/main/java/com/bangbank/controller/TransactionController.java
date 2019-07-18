@@ -24,59 +24,20 @@ public class TransactionController {
 	BankTransactionService bts;
 	
 	@RequestMapping(path = "/NEFT",method = RequestMethod.POST)
-	public ModelAndView neftTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
+	public TransactionDTO neftTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
 		
-		if(bts.transfer(transaction,"NEFT")) {
-			
-			/* model.put("Reference ID", transaction.getTransactionId()); */
-			model.put("Mode", transaction.getMode());
-			model.put("To Account", transaction.getToAccNo());
-			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAccNo());	
-			model.put("Date", transaction.getTrnDate());
-			model.put("Remarks", transaction.getRemarks());
-			
-			return new ModelAndView("forward:/TransactionSuccess.html", model);
-		}
-		else
-			return new ModelAndView("forward:/TransactionFailed.html", model);
+		return bts.transfer(transaction,"NEFT");
 	}
 	
 	@RequestMapping(path = "/RTGS",method = RequestMethod.POST)
-	public ModelAndView rtgsTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
-		
-		if(bts.transfer(transaction,"RTGS")) {
-			
-			/* model.put("Reference ID", transaction.getTransactionId()); */
-			model.put("Mode", transaction.getMode());
-			model.put("To Account", transaction.getToAccNo());
-			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAccNo());	
-			model.put("Date", transaction.getTrnDate());
-			model.put("Remarks", transaction.getRemarks());
-		
-			return new ModelAndView("forward:/TransactionSuccess.html", model);
+	public TransactionDTO rtgsTransaction(@RequestBody TransactionDTO transaction) {
+	
+		return bts.transfer(transaction,"RTGS");
 		}
-		else
-			return new ModelAndView("forward:/TransactionFailed.html", model);
-	}
 	
 	@RequestMapping(path = "/IMPS",method = RequestMethod.POST)
-	public ModelAndView impsTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
+	public TransactionDTO impsTransaction(Map<String,Object> model,@RequestBody TransactionDTO transaction) {
 		
-		if(bts.transfer(transaction,"IMPS")) {
-		
-			/* model.put("Reference ID", transaction.getTransactionId()); */
-			model.put("Mode", transaction.getMode());
-			model.put("To Account", transaction.getToAccNo());
-			model.put("Amount", transaction.getAmt());
-			model.put("From Account", transaction.getFrmAccNo());	
-			model.put("Date", transaction.getTrnDate());
-			model.put("Remarks", transaction.getRemarks());
-			
-			return new ModelAndView("forward:/TransactionSuccess.html", model);
-		}
-		else
-			return new ModelAndView("forward:/TransactionFailed.html", model);
+		return bts.transfer(transaction,"IMPS");
 	}
 }

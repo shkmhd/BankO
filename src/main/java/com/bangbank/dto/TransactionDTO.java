@@ -3,23 +3,49 @@ package com.bangbank.dto;
 import java.util.Date;
 
 import com.bangbank.entity.BankAccount;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TransactionDTO {
-	
+
+	public int getTransactionID() {
+		return transactionID;
+	}
+	public void setTransactionID(int transactionID) {
+		this.transactionID = transactionID;
+	}
+	public void setFrmAccNo(long frmAccNo) {
+		this.frmAccNo = frmAccNo;
+	}
+	private String trnStat;
+	public String getTrnStat() {
+		return trnStat;
+	}
+	public void setTrnStat(String trnStat) {
+		this.trnStat = trnStat;
+	}
+	private int transactionID;
 	
 	private long frmAccNo;
-	
+
 	private long toAccNo;
-	
+
 	private double amt;
-	
+	@JsonFormat(locale = "hu", shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date trnDate;
 
 	private String mode;
-	
+
 	private String remarks;
-	
-	
+
+	private String matInst;
+
+
+	public String getMatInst() {
+		return matInst;
+	}
+	public void setMatInst(String matInst) {
+		this.matInst = matInst;
+	}
 	public long getFrmAccNo() {
 		return frmAccNo;
 	}
@@ -58,21 +84,22 @@ public class TransactionDTO {
 	}
 	@Override
 	public String toString() {
-		return "Transaction [" +"frmAcc=" + frmAccNo + ", toAccNo=" + toAccNo + ", amt="
-				+ amt + ", trnDate=" + trnDate + ", mode=" + mode + ", remarks=" + remarks + "]";
+		return "TransactionDTO [frmAccNo=" + frmAccNo + ", toAccNo=" + toAccNo + ", amt=" + amt + ", trnDate=" + trnDate
+				+ ", mode=" + mode + ", remarks=" + remarks + ", matInst=" + matInst + "]";
 	}
 	public TransactionDTO(int transactionId, long frmAccNo, long toAccNo, double amt, Date trnDate, String mode,
-			String remarks) {
-		
-		
+			String remarks,String matInst) {
+
+
 		this.frmAccNo = frmAccNo;
 		this.toAccNo = toAccNo;
 		this.amt = amt;
 		this.trnDate = trnDate;
 		this.mode = mode;
 		this.remarks = remarks;
+		this.matInst=matInst;
 	}
 	public TransactionDTO() {
 	}
-	
+
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Transfer Successful</title>
+
+<script  src="https://code.jquery.com/jquery-3.4.1.js"  type="text/javascript"></script>
+<script>
+$( document ).ready(function() {
+	var obj = JSON.parse(sessionStorage.getItem("transactiondetail"));       
+	
+	$("#transdetails").append($("<div></div>").text(obj.transactionID));
+	$("#transdetails").append($("<div></div>").text(obj.frmAccNo));
+	$("#transdetails").append($("<div></div>").text(obj.toAccNo));
+	$("#transdetails").append($("<div></div>").text(obj.trnDate));
+	$("#transdetails").append($("<div></div>").text(obj.mode));
+	$("#transdetails").append($("<div></div>").text(obj.remarks));
+	$("#transdetails").append($("<div></div>").text(obj.matInst));
+	
+});
+
+</script>
+</head>
+<body>
+<h2>Transfer Successful</h2>
+<div id="transdetails">
+</div>
+</body>
+</html>
