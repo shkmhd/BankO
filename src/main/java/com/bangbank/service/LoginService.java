@@ -16,7 +16,7 @@ public class LoginService {
 		public boolean passwordValidation(OnlineAccount oa) {
 		
 		System.out.println("Service is called");
-		if(oadao.fetchOA(oa.getAccount().getaccnumber()).getLoginPassword()==oa.getLoginPassword()) {
+		if(oadao.fetchOA(oa.getAccount().getAccnumber()).getLoginPassword()==oa.getLoginPassword()) {
 			return true;
 		}
 		else

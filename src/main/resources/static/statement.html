@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Get The Statement Of Your Account</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	
+$(function(){
+	
+	$("#full").submit(function(evt){
+			
+			evt.preventDefault();	//Prevents the Default Action of the Event
+			
+			var adt={
+					accId:111222
+			}
+			
+		$.ajax({
+			
+			url:'/Statement/Full',
+			method:'POST',
+			data:JSON.stringify(adt),
+			contentType:'application/json',
+			
+			success:function(response){
+				
+				//alert(JSON.stringify(response));
+				
+				/* $.each(response,function(index,trans){
+					
+					$("#divFrm").html('<h2/>').text("Statement Details:")
+								.append(trans.transactionId)
+								.append(trans.frmAcc)
+								.append(trans.toAccNo)
+								.append(trans.amt)
+								.append(trans.trnDate)
+								.append(trans.mode)
+								.append(trans.remarks);
+				}); */
+				
+				sessionStorage['response']=JSON.stringify(response);
+				//window.location.href ="examdisplay.html";
+				
+				window.location.href='FullStatement.html';
+				
+			}
+		});		
+	})	
+	
+	$("#mini").submit(function(evt){
+		
+		evt.preventDefault();	//Prevents the Default Action of the Event
+		
+		var adt={
+				accId:111222
+		}
+		
+	$.ajax({
+		
+		url:'/Statement/Mini',
+		method:'POST',
+		data:JSON.stringify(adt),
+		contentType:'application/json',
+		
+		success:function(response){
+			
+			//alert(JSON.stringify(response));
+			
+			/* $.each(response,function(index,trans){
+				
+				$("#divFrm").html('<h2/>').text("Statement Details:")
+							.append(trans.transactionId)
+							.append(trans.frmAcc)
+							.append(trans.toAccNo)
+							.append(trans.amt)
+							.append(trans.trnDate)
+							.append(trans.mode)
+							.append(trans.remarks);
+			}); */
+			
+			sessionStorage['response']=JSON.stringify(response);
+			//window.location.href ="examdisplay.html";
+			
+			window.location.href='MiniStatement.html';
+		}
+	});		
+})	
+})
+</script>
+</head>
+<body>
+<h1>To Get The Statement Details</h1>
+<form id="full">
+<input type="submit" value="FullStatement"/>
+</form>
+<form id="mini">
+<input type="submit" value="MiniStatement"/>
+</form>
+<div id="divFrm"></div>
+</body>
+</html>

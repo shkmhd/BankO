@@ -3,6 +3,7 @@ package com.bangbank.dto;
 import java.util.Date;
 
 import com.bangbank.entity.BankAccount;
+import com.bangbank.entity.Transaction;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TransactionDTO {
@@ -98,6 +99,10 @@ public class TransactionDTO {
 		this.mode = mode;
 		this.remarks = remarks;
 		this.matInst=matInst;
+	}
+
+	public TransactionDTO(Transaction txn) {
+		this(txn.getTransactionId(),txn.getFrmAcc().getAccnumber(),txn.getToAccNo(),txn.getAmt(),txn.getTrnDate(),txn.getMode(),txn.getRemarks(),txn.getMatInst());
 	}
 	public TransactionDTO() {
 	}
