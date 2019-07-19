@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>MiniStatement</title>
+<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 $( document ).ready(function() {
 	var res=JSON.parse(sessionStorage['response']);
-	var html = "<table><caption>Mini Statement</caption><tr><th>From Acc. No</th><th>To Acc. No</th><th>Amount</th><th>Transaction Date</th><th>Mode</th><th>Remarks</th></tr>";
+	var html = "<table><caption>Statement</caption><tr><th>From Acc. No</th><th>To Acc. No</th><th>Amount</th><th>Transaction Date</th><th>Mode</th><th>Remarks</th></tr>";
     for (var i = 0; i < res.length; i++) {
         html+="<tr>";
         html+="<td>"+res[i].frmAccNo+"</td>";

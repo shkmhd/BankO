@@ -33,7 +33,10 @@ public class TransactionDTO {
 	private double amt;
 	@JsonFormat(locale = "hu", shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date trnDate;
-
+	@JsonFormat(locale = "hu", shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private Date fromDate;
+	@JsonFormat(locale = "hu", shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private Date endDate;
 	private String mode;
 
 	private String remarks;
@@ -41,6 +44,18 @@ public class TransactionDTO {
 	private String matInst;
 
 
+	public Date getFromDate() {
+		return fromDate;
+	}
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 	public String getMatInst() {
 		return matInst;
 	}
@@ -105,6 +120,7 @@ public class TransactionDTO {
 		this(txn.getTransactionId(),txn.getFrmAcc().getAccnumber(),txn.getToAccNo(),txn.getAmt(),txn.getTrnDate(),txn.getMode(),txn.getRemarks(),txn.getMatInst());
 	}
 	public TransactionDTO() {
+		super();
 	}
 
 }

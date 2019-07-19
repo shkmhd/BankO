@@ -1,5 +1,6 @@
 package com.bangbank.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -22,6 +23,12 @@ public class TransactionDao extends GenericDao{
 
 		return em.createQuery("select distinct t from Transaction t inner join t.frmAcc fa where t.toAccNo=:accno or fa.accnumber=:accno order by t.trnDate desc")
 				.setParameter("accno", accNo).setMaxResults(5).getResultList();
+	}
+	public List<Transaction> fetchStatementBetweenDate(long accNo,Date frmdate,Date todate) {
+
+		return em.createQuery("select distinct t from Transaction t inner join t.frmAcc fa where (t.toAccNo=:accno or fa.accnumber=:accno) and t.trnDate between :fdate and :tdate order by t.trnDate desc")
+				.setParameter("accno", accNo).setParameter("fdate", frmdate).setParameter("tdate", todate)
+				.getResultList();
 	}
 	/*
 	 * public fetchAllDetails(Class<E> c) {

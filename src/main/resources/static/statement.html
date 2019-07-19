@@ -3,11 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Get The Statement Of Your Account</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	
 $(function(){
 	
 	$("#full").submit(function(evt){
@@ -15,6 +12,7 @@ $(function(){
 			evt.preventDefault();	//Prevents the Default Action of the Event
 			
 			var adt={
+					/* accId: sessionStorage.getItem("LoggedInAccNo") */
 					accId:111222
 			}
 			
@@ -55,6 +53,7 @@ $(function(){
 		evt.preventDefault();	//Prevents the Default Action of the Event
 		
 		var adt={
+				/* accId: sessionStorage.getItem("LoggedInAccNo") */
 				accId:111222
 		}
 		
@@ -86,21 +85,69 @@ $(function(){
 			
 			window.location.href='MiniStatement.html';
 		}
-	});		
-})	
+	});
+ })
+	
+		$("#btwndate").submit(function(evt){
+			
+			evt.preventDefault();	//Prevents the Default Action of the Event
+			
+			var adt={
+					/* frmAccNo: sessionStorage.getItem("LoggedInAccNo") */
+					frmAccNo:111222,
+					fromDate:$("#startdate").val(),
+					endDate:$("#enddate").val()
+			}
+			
+		$.ajax({
+			
+			url:'/Statement/BetweenDates',
+			method:'POST',
+			data:JSON.stringify(adt),
+			contentType:'application/json',
+			
+			success:function(response){
+				
+				//alert(JSON.stringify(response));
+				
+				/* $.each(response,function(index,trans){
+					
+					$("#divFrm").html('<h2/>').text("Statement Details:")
+								.append(trans.transactionId)
+								.append(trans.frmAcc)
+								.append(trans.toAccNo)
+								.append(trans.amt)
+								.append(trans.trnDate)
+								.append(trans.mode)
+								.append(trans.remarks);
+				}); */
+				
+				sessionStorage['response']=JSON.stringify(response);
+				//window.location.href ="examdisplay.html";
+				
+				window.location.href='StatementBetweenDates.html';
+			}
+		});	
+	});
 })
 </script>
 </head>
 <body>
-<h1>To Get The Statement Details</h1>
-<form id="full">
-<button type="submit"  class="btn btn-success btn-lg" value="FullStatement">FullStatement</button><br/> <br/>
-</form>
-<form id="mini">
-
-<button type="submit"  class="btn btn-success btn-lg" value="MiniStatement">MiniStatement</button>
-
-</form>
-<!--  <div id="divFrm"></div> -->
+	<h1>To Get The Statement Details</h1>
+	<form id="full">
+		<input type="submit" value="FullStatement" />
+	</form>
+	<form id="mini">
+		<input type="submit" value="MiniStatement" />
+	</form>
+	<form id="btwndate">
+		<label>From Date</label>
+		<input type="date" id="startdate"></input> 
+		<label>To Date</label>
+		<input type="date"id="enddate"></input> 
+			
+			<input type="submit" value="BetweenDates" />
+	</form>
+	<div id="divFrm"></div>
 </body>
 </html>

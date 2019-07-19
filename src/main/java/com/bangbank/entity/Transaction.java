@@ -19,6 +19,7 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "TRANSACTION_ID")
 	private int transactionId;
 	/* @Column(name = "FROM_ACCOUNT_NUMBER") */
 	@ManyToOne(cascade = CascadeType.ALL)

@@ -37,7 +37,7 @@ public class BangBankApplicationTests {
 	BankTransactionService bts;
 	@Test
 	public void contextLoads() {
-		 System.out.println(ls.passwordValidation(oadao.fetchOA(281L))); 
+		/* System.out.println(ls.passwordValidation(oadao.fetchOA(281L))); */
 		
 		
 		/*

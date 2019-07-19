@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bangbank.dto.AccountDTO;
 import com.bangbank.dto.TransactionDTO;
 import com.bangbank.entity.BankAccount;
 import com.bangbank.entity.Transaction;
@@ -54,6 +55,19 @@ public class StatementController {
 		System.out.println("This is the controller Part");
 	
 		List<TransactionDTO> transactions= stmtService.miniStatement(accDto);
+		
+		//model.put("Account Number", accDto.getAccId());
+		
+		//return new ModelAndView("forward:/MiniStatement.html",model);
+		
+		return transactions;
+	}
+	@RequestMapping(path = "/BetweenDates",method = RequestMethod.POST)
+	public List<TransactionDTO> getBetweenDatesAccStatement(Map<String,Object> model,@RequestBody TransactionDTO txnDto) {
+		
+		System.out.println("This is the controller Part");
+	
+		List<TransactionDTO> transactions= stmtService.statementBetweenDates(txnDto);
 		
 		//model.put("Account Number", accDto.getAccId());
 		

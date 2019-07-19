@@ -3,14 +3,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>FullStatement</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
 <script>
 $( document ).ready(function() {
 	var res=JSON.parse(sessionStorage['response']);
-	var html = "<table class= 'table table-bordered'><thead class='thead-dark'><tr><th scope='col'>From Acc. No</th><th scope='col'>To Acc. No</th><th scope='col'>Amount</th><th scope='col'>Transaction Date</th><th scope='col'>Mode</th><th scope='col'>Remarks</th></tr></thead><tbody>";
+	var html = "<table><caption>Full Statement</caption><tr><th>From Acc. No</th><th>To Acc. No</th><th>Amount</th><th>Transaction Date</th><th>Mode</th><th>Remarks</th></tr>";
     for (var i = 0; i < res.length; i++) {
         html+="<tr>";
         html+="<td>"+res[i].frmAccNo+"</td>";
@@ -21,7 +18,6 @@ $( document ).ready(function() {
         html+="<td>"+res[i].remarks+"</td>";
         html+="</tr>";
     }
-    html+="</tbody>";
     html+="</table>";
     $("#stmtdisplay").html(html);
 });
@@ -29,7 +25,6 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<h1>Full Statement</h1>
 <div id="stmtdisplay">
 </div>
 </body>

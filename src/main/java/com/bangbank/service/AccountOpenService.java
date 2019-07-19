@@ -35,7 +35,7 @@ public class AccountOpenService {
 		//Address part
 	
 		/* BankAccountRequest barnew= */
-		bardao.persistAccountRequest(acc);
+		bardao.addToDataBase(acc);
 		
 		System.out.println("success");
 		

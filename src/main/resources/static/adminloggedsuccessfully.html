@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Dashboard Page</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+$( document ).ready(function() {
+	
+	/* console.log("Iam Ready to Get the Data"); */
+	
+	$.ajax({
+				
+		url:'/admin',		
+		context:document.body,
+		
+		success:function(res){
+			
+			/* alert(JSON.stringify(res)); */
+			/* var r= '<input type="button" value="Approve"/>'; */
+			var html = "<table><caption>Account Details</caption><tr><th>Title</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Father Name</th><th>Mobile No</th><th>Email ID</th><th>AadharCard No</th><th>DOB</th><th>Residential Address</th><th>Permanent Address</th><th>Occupation</th><th>BARID</th><th>Approved</th><th>Approve It</th></tr>";
+			
+		    for (var i = 0; i < res.length; i++) {
+			       html+="<tr>";
+			       html+="<td>"+res[i].title+"</td>";
+			       html+="<td>"+res[i].firstName+"</td>";
+			       html+="<td>"+res[i].middleName+"</td>";
+			       html+="<td>"+res[i].lastName+"</td>";
+			       html+="<td>"+res[i].fatherName+"</td>";
+			       html+="<td>"+res[i].mobileNo+"</td>";
+			       html+="<td>"+res[i].emailId+"</td>";
+			       html+="<td>"+res[i].aadharCardNo+"</td>";
+			       html+="<td>"+res[i].dob+"</td>";
+			       html+="<td>"+res[i].residentialAddress+"</td>";
+			       html+="<td>"+res[i].permenantAddress+"</td>";
+			       html+="<td>"+res[i].occupation+"</td>";
+			       html+="<td>"+res[i].barid+"</td>";
+			       html+="<td>"+res[i].approved+"</td>";
+			       html+="<td>"+'<input type="button" class="verifybutton" id='+res[i].barid+' value="Approve"/>'+"</td>";
+			       html+="</tr>";
+			}
+			    html+="</table>";
+			    $("#accdetailsdisplay").html(html);
+		}
+	})
+	$(document).on("click", "input.verifybutton" , function() {
+		/* console.log("Iam a dynamic button"); */
+		alert(this.id);
+		
+		var obj={
+				barid : this.id
+		}
+		$.ajax({
+			
+			url:'/adminapproval',
+			method:'POST',
+			data:JSON.stringify(obj),
+			contentType:'application/json',
+			
+			success:function(response){
+				
+				alert("Request Approved");
+				document.location.reload();
+			}
+		}); 
+    });
+	
+})
+</script>
+</head>
+<body>
+<div id="accdetailsdisplay"></div>
+</body>
+</html>
