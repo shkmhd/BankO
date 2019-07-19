@@ -46,9 +46,9 @@
 			<div class="alert alert-light" role="alert">
 				<h1>Login to your Account</h1>
 				<br /> <br /> <label>User ID:</label> <input type="number"
-					placeholder="Enter Account no" id="accno" required /><br /> <br />
+					placeholder="Enter Account no" id="accno"   pattern="[A-Za-z]{3}" required /><br /> <br />
 				<label>Password:</label> <input type="password"
-					placeholder="Enter password" id="password" required /><br />
+					placeholder="Enter password" id="password"  pattern="^([a-zA-Z0-9@*#]{8-15})$" required/><br />
 			</div>
 			<button type="submit" class="btn btn-primary">Login</button>
 			<br /> <br /> <a href="register.html">First Time User? register</a><br />

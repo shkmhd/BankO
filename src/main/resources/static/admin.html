@@ -38,10 +38,10 @@
 			<div class="alert alert-light" role="alert">
 				<h1>Admin Login</h1>
 				<br />
-				<br /> <label>Username:</label> <input type="name"
-					placeholder="Enter Username" id="usrname" required /><br />
+				<br /> <label>Username:</label> <input type="text"
+					placeholder="Enter Username" id="usrname" required  pattern ="[A-Za-z]{1-15}"/><br />
 				<br /> <label>Password:</label> <input type="password"
-					placeholder="Enter password" id="password" required /><br />
+					placeholder="Enter password" id="password" required pattern="^([a-zA-Z0-9@*#]{8,15})$" /><br />
 			</div>
 			<button type="submit" class="btn btn-primary">Login</button>
 			<br />
