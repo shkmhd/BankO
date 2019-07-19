@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register here for Online Banking</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js" type="text/javascript"></script>
+<script>
+$(function(){
+	$("#onlinebanking").submit(function(evt){
+		evt.preventDefault();
+		var obj = {
+					
+					loginPassword : $("#loginPassword").val(),
+					transactionPassword : $("#transactionPassword").val()
+		}
+		$.ajax({
+			url :'/OnlineAccount/Register',
+			method:'POST',
+			data: JSON.stringify(obj),	//The Data we want ot Send
+			contentType: 'application/json',
+			success :function(response){
+			
+				alert(JSON.stringify(response));
+			}
+		})
+	})
+})
+					
+		
+
+
+</script>
+</head>
+<body>
+<form id="onlinebanking">
+<h2>Create your Online Account</h2>
+
+
+	
+	<label>Login Password</label>
+	<input type="password"  id="loginPassword"/>
+	
+	<label>Transaction Password</label>
+	<input type="password"  id="transactionPassword"/>
+	
+		<button type="submit" value="submit">Create Account</button>
+	
+	
+
+
+</form>
+
+</body>
+</html>

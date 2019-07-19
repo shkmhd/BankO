@@ -2,34 +2,67 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Account Open</title>
+<script src= "https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(function() {
+	$("#accountregistration").submit(function(evt){
+		evt.preventDefault();
+		var obj ={
+				firstName: $("#fName").val(),
+				middleName: $("#mName").val(),
+				lastName: $("#lName").val(),
+				fatherName: $("#fathName").val(),
+				mobileNo: $("#mobileNo").val(),
+				emailId: $("#emailId").val(),
+				aadharCardNo: $("#adhNumber").val(),
+				DOB: $("#dob").val()
+		
+		}
+          
+		$.ajax({
+			url :'/accountopen',
+			method : 'POST',
+			data : JSON.stringify(obj),
+			contentType : 'application/json',
+			
+			success : function(response) {
+				alert(JSON.stringify(response));
+				
+			}
+				
+		})
+})
+})
+
+</script>
 </head>
 <body>
 <h2>Open A Savings Account</h2>
 <h2>Personal Details</h2>
-<form id="accountregistration" action="/registrationaccount">
-<label>Title:</label>
+<form id="accountregistration" >
+<!-- <label>Title:</label>
 	<select>
 		<option value="Mr">Mr</option>
 		<option value="Mrs">Mrs</option>
-	</select><br/>
+	</select><br/> -->
 <label>First Name:</label>
-	<input type="text" name="fName"/><br/>
+	<input type="text" id="fName" placeholder="Enter your First name" /><br/>
 <label>Middle Name:</label>
-	<input type="text" name="mName"/><br/>
+	<input type="text" id="mName" placeholder="Enter your Middle name" ><br/>
 <label>Last Name:</label>
-	<input type="text" name="lName"/><br/>
+	<input type="text" id="lName" placeholder="Enter your Last name" /><br/>
 <label>Father's Name:</label>
-	<input type="text" name="fathName"/><br/>
+	<input type="text" id="fathName" placeholder="Enter your Father's name" /><br/>
 <label>Mobile Number:</label>
-	<input type="number" name="mobNumber"/><br/>
+	<input type="number" id="mobileNo" placeholder="Enter your Mobile Number"/><br/>
 <label>Email ID:</label>
-	<input type="text" name="emailId"/><br/>
+	<input type="email" id="emailId" placeholder="Enter your Mail ID"/><br/>
 <label>Aadhar Card Number:</label>
-	<input type="text" name="adhNumber"/><br/>
+	<input type="number" id="adhNumber" placeholder="Enter your AadharCard Number" /><br/>
 <label>Date of Birth:</label>
-	<input type="date" name="dob"/><br/>
-<h3>Residential Address:</h3>
+	<input type="date" id="dob" placeholder="Enter your Date Of Birth"/><br/>
+<!-- <h3>Residential Address:</h3>
 <label class="required">a)Address Line1:</label>
 	<input type="text" name="resAddr1"/><br/>
 <label class="required">b)Address Line1:</label>
@@ -58,7 +91,7 @@
 <label class="required">b)Source of Income:</label>
 	<input type="text" name="souofIncome"/><br/>
 <label class="required">c)Gross Annual Income:</label>
-	<input type="text" name="groAnnIncome"/><br/>
+	<input type="text" name="groAnnIncome"/><br/> -->
 <input type="checkbox"/>I agree</br>
 <button type="submit">Submit</button>
 <style>

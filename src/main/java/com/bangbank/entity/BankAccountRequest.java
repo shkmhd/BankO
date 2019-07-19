@@ -1,6 +1,6 @@
 package com.bangbank.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Table(name="TBL_BANK_ACCOUNT_REQUEST")
 public class BankAccountRequest {
 	@Id
+	@GeneratedValue
 	@Column(name = "RequestId")
 	private int BARid;
 	@Column(name = "TITLE")
@@ -28,11 +29,11 @@ public class BankAccountRequest {
 	@Column(name = "FATHERS_NAME")
 	private String fatherName;
 	@Column(name = "MOBILE_NO")
-	private int mobileNo;
+	private long mobileNo;
 	@Column(name = "EMAIL")
 	private String emailId;
 	@Column(name = "AADHAR_CARD_NUMBER")
-	private int aadharCardNo;
+	private long aadharCardNo;
 	@Column(name = "DATE_OF_BIRTH")
 	private Date DOB;
 	@Column(name = "RESIDENTIAL_ADDRESS_ID")
@@ -79,10 +80,10 @@ public class BankAccountRequest {
 	public void setFatherName(String fatherName) {
 		this.fatherName = fatherName;
 	}
-	public int getMobileNo() {
+	public long getMobileNo() {
 		return mobileNo;
 	}
-	public void setMobileNo(int mobileNo) {
+	public void setMobileNo(long mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 	public String getEmailId() {
@@ -91,10 +92,10 @@ public class BankAccountRequest {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getAadharCardNo() {
+	public long getAadharCardNo() {
 		return aadharCardNo;
 	}
-	public void setAadharCardNo(int aadharCardNo) {
+	public void setAadharCardNo(long aadharCardNo) {
 		this.aadharCardNo = aadharCardNo;
 	}
 	public Date getDOB() {

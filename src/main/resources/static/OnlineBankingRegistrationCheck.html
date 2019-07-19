@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Online Banking Registration</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(function(){
+	$("#onlinebankingregcheck").submit(function(evt){
+		
+		evt.preventDefault();
+	
+		$.ajax({
+			url  : '/OnlineAccount/AccCheck?accno='+$("#accno").val(),
+			method	: 'GET',
+			success :function(response){
+			
+				//alert(JSON.stringify(response));
+				if(response.stat=="success")
+				window.location.href = "OnlineBankingRegistration.html";
+				else{
+				alert(JSON.stringify(response.stat));
+				window.location.href = "accountopen.html";
+				}
+
+				
+			}
+		})
+	})
+})
+</script>
+</head>
+<body>
+<form id="onlinebankingregcheck">
+<h2>Enter your Account Number!</h2>
+    <label>Account Number</label>
+		<input type="number"  id="accno"/>
+	
+	<button type="submit" value="save">Go	</button>
+</form>
+</body>
+</html>

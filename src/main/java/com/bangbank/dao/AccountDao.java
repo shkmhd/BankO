@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.bangbank.entity.AdminAccount;
 import com.bangbank.entity.BankAccount;
 
 @Repository
@@ -22,10 +23,13 @@ public class AccountDao extends GenericDao{
 	
 	public BankAccount fetchById(long accNo) {
 		/* System.out.println(em); */
-		Query q=em.createQuery("select a from BankAccount a where a.accnumber=:em");
-		q.setParameter("em", accNo);
-		List<BankAccount>ls=q.getResultList();
-		return ls.get(0);
+		List<BankAccount> results = em.createQuery("select a from BankAccount a where a.accnumber=:em").setParameter("em", accNo).getResultList();
+		if (results.isEmpty()) {
+			return null; 
+		} else {
+			return results.get(0);
+		}
+	
 				
 	}
 }
