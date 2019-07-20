@@ -17,7 +17,16 @@ public class TransactionDTO {
 	public void setFrmAccNo(long frmAccNo) {
 		this.frmAccNo = frmAccNo;
 	}
+	private int otp;
 	private String trnStat;
+	
+	
+	public int getOtp() {
+		return otp;
+	}
+	public void setOtp(int otp) {
+		this.otp = otp;
+	}
 	public String getTrnStat() {
 		return trnStat;
 	}

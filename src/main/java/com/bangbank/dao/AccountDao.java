@@ -26,6 +26,10 @@ public class AccountDao extends GenericDao{
 		Query q=em.createQuery("select a from BankAccount a where a.accnumber=:em");
 		q.setParameter("em", accNo);
 		List<BankAccount> ls =q.getResultList();
+		if(ls.isEmpty()) {
+			return null;
+		}
+		else
 		return ls.get(0);
 
 	}

@@ -3,7 +3,17 @@ package com.bangbank.dto;
 public class VerificationStatusDto {
 	private String stat;
 	private long loggedInAccNo;
+	private long txno;
 	
+	
+
+	public long getTxno() {
+		return txno;
+	}
+
+	public void setTxno(long txno) {
+		this.txno = txno;
+	}
 
 	public long getLoggedInAccNo() {
 		return loggedInAccNo;

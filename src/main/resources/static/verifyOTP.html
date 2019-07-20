@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>OTP</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$( document ).ready(function() {
+    $("#yacc").append(sessionStorage.getItem("LoggedInAccNo"));
+    $("#macc").append(sessionStorage.getItem("merchaccno"));
+    $("#amount").append(sessionStorage.getItem("pgamt"));
+    var obj = {
+			frmAccNo : sessionStorage.getItem("LoggedInAccNo"),
+			toAccNo : sessionStorage.getItem("merchaccno"),
+			amt : sessionStorage.getItem("pgamt"),
+			trnDate: new Date()
+		}
+    $.ajax({
+		url : '/OTPGen',
+		context: document.body,
+		type : 'POST',
+		data:JSON.stringify(obj),
+		contentType : 'application/json',
+		success : function(response) {
+			if(response.stat=="true"){
+				alert("OTP has been generated and sent to registered mail")
+			}
+			else
+				alert("Error Generating  OTP");
+	}
+    });
+});
+</script>
+<script>
+$(function() {
+	$("#otpform").submit(
+			function(evt) {
+
+				evt.preventDefault();
+				var obj = {
+					otp : $("#otp").val(),
+					frmAccNo : sessionStorage.getItem("LoggedInAccNo"),
+					toAccNo : sessionStorage.getItem("merchaccno"),
+					amt : sessionStorage.getItem("pgamt"),
+					trnDate: new Date(),
+					remarks: "Paid via BangBank Payment Gateway"
+				}
+				$.ajax({
+					url : '/OTPCheck',
+					type : 'POST',
+					data : JSON.stringify(obj),
+					contentType : 'application/json',
+					success : function(response) {
+						//if(response.password==password)
+						if (response.stat == "success") {
+							alert("OTP has been Verified");
+							var url = sessionStorage.getItem("pgredirurl");
+							url += "?status="+response.stat;
+							url += "&txno="+response.txno;
+							window.location.href=url;
+						} else {
+							alert("Incorrect OTP");
+						}
+					}
+				})
+			})
+})
+</script>
+</head>
+<body>
+<div id="yacc">Your Account No:</div>
+<div id="macc">Merchant Account No:</div>
+<div id="amount">Amount:</div>
+<form id="otpform">
+<label>Enter OTP</label>
+<input id="otp" type="text"/>
+<input type="submit" value="Submit"/>
+</form>
+
+</body>
+</html>
