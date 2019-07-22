@@ -1,6 +1,8 @@
 package com.bangbank.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import com.bangbank.dao.AccountDao;
@@ -16,6 +18,8 @@ public class AdminApprovalService {
 	private BARDao barDao;
 	@Autowired
 	private AccountDao accdao;
+	@Autowired
+	private MailSender mailSender;
 	
 	private BankAccount bankAcc=new BankAccount();
 	
@@ -45,6 +49,14 @@ public class AdminApprovalService {
 		
 		barDao.removeApprovedRequest();
 		
-		accdao.addToDataBase(bankAcc);
+		BankAccount nbacc=accdao.addToDataBase(bankAcc);
+		String email =nbacc.getEmailId();
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("Rubina.Z@lntinfotech.com");
+		message.setTo(email);
+		message.setSubject("Regd. Your Bank Account Request");
+		message.setText("Dear Customer,"+System.getProperty("line.separator")+ " Congrats!"+System.getProperty("line.separator")+"Your Application for a Bank Account at BangBank has been accepted."+System.getProperty("line.separator")+"Your New Account Number is :"+nbacc.getAccnumber()+System.getProperty("line.separator")+"Thank You for Banking with us!");
+		mailSender.send(message);
+		
 	}
 }

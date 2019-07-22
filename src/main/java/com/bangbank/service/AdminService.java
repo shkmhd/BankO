@@ -24,7 +24,7 @@ public class AdminService {
  		
 	public List<AccountDTO> getAccountRequests() {
 		
-		List<BankAccountRequest> barlist = barDao.getReqList("false");
+		List<BankAccountRequest> barlist = barDao.getReqList("FALSE");
 		
 		List<AccountDTO> bardtolist=new ArrayList<AccountDTO>();
 		

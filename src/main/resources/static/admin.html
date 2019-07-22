@@ -14,7 +14,7 @@
 			var obj = {
 				username : $("#usrname").val(),
 				password : $("#password").val()
-			}
+			};
 			$.ajax({
 				url : '/Login/Admin',
 				type : 'POST',
@@ -39,9 +39,9 @@
 				<h1>Admin Login</h1>
 				<br />
 				<br /> <label>Username:</label> <input type="text"
-					placeholder="Enter Username" id="usrname" required  pattern ="[A-Za-z]{1-15}"/><br />
+					placeholder="Enter Username" id="usrname" required  /><br />
 				<br /> <label>Password:</label> <input type="password"
-					placeholder="Enter password" id="password" required pattern="^([a-zA-Z0-9@*#]{8,15})$" /><br />
+					placeholder="Enter password" id="password" required  /><br />
 			</div>
 			<button type="submit" class="btn btn-primary">Login</button>
 			<br />
