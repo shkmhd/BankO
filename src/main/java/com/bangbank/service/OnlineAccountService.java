@@ -26,12 +26,10 @@ public class OnlineAccountService {
     	 oacc.setLoginPassword(onlineAccountDTO.getLoginPassword());
     	 oacc.setTransactionPassword(onlineAccountDTO.getTransactionPassword());
     	 oacc.setLastLogin(onlineAccountDTO.getLastLogin());
-    	 onlineAccountDao.addToDataBase(oacc);
-    	
-    	 return new VerificationStatusDto("Success");
-    	 
-
-    	 
+    	 OnlineAccount noacc=onlineAccountDao.addToDataBase(oacc);
+    	 noacc.setBankAccount(accountDao.fetchById(onlineAccountDTO.getAccno()));
+    	 onlineAccountDao.addToDataBase(noacc);
+    	 return new VerificationStatusDto("success"); 
     	 
 	}
 

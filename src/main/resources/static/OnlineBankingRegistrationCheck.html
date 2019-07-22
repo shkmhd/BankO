@@ -9,15 +9,20 @@ $(function(){
 	$("#onlinebankingregcheck").submit(function(evt){
 		
 		evt.preventDefault();
-	
+		var accno=$("#accno").val();
 		$.ajax({
 			url  : '/OnlineAccount/AccCheck?accno='+$("#accno").val(),
 			method	: 'GET',
 			success :function(response){
 			
-				//alert(JSON.stringify(response));
-				if(response.stat=="success")
-				window.location.href = "OnlineBankingRegistration.html";
+				alert(JSON.stringify(response));
+				if(response.stat==="success")
+				{
+					alert(accno);
+					sessionStorage.setItem("checkaccno",accno);
+					window.location.href = "OnlineBankingRegistration.html";
+				
+				}
 				else{
 				alert(JSON.stringify(response.stat));
 				window.location.href = "accountopen.html";
