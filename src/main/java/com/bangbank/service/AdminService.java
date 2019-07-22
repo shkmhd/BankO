@@ -1,5 +1,10 @@
 package com.bangbank.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +34,17 @@ public class AdminService {
 		List<AccountDTO> bardtolist=new ArrayList<AccountDTO>();
 		
 		for(BankAccountRequest bareq:barlist) {
+Path srcFile = Paths.get("d:/uploads/Aadhar/"+bareq.getAadharCardFilePath());
+			Path destFile = Paths.get("src/main/resources/static/uploads/"+bareq.getAadharCardFilePath());
+				
+			try {
+				
+				Files.copy(srcFile, destFile, StandardCopyOption.REPLACE_EXISTING);
+					
+				} 
+				catch (IOException e) {
+					e.printStackTrace();
+				}
 			System.out.println(bareq.getBARid());
 			AccountDTO bardto=new AccountDTO(bareq);
 			System.out.println(bardto.getBARid());

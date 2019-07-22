@@ -19,8 +19,10 @@ public class AccountDTO {
 	private long mobileNo;
 	private String emailId;
 	private long aadharCardNo;
+	
 	@JsonFormat(locale = "hu", shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date dob;
+	
 	private Integer residentialAddress;
 	private Integer permenantAddress;
 	private String occupation;
@@ -28,6 +30,8 @@ public class AccountDTO {
 	
 	private double balance;
 	private String accType;
+	
+	private String aadharCardFilePath;
 	
 	
 	public int getBARid() {
@@ -45,9 +49,7 @@ public class AccountDTO {
 	public void setAccId(long accId) {
 		this.accId = accId;
 	}
-
 	
-
 	public String getTitle() {
 		return title;
 	}
@@ -167,6 +169,15 @@ public class AccountDTO {
 	public void setAccType(String accType) {
 		this.accType = accType;
 	}
+	
+
+	public String getAadharCardFilePath() {
+		return aadharCardFilePath;
+	}
+
+	public void setAadharCardFilePath(String aadharCardFilePath) {
+		this.aadharCardFilePath = aadharCardFilePath;
+	}
 
 	@Override
 	public String toString() {
@@ -218,6 +229,7 @@ public class AccountDTO {
 		this.permenantAddress =  bar.getPermenantAddress();
 		this.occupation = bar.getOccupation();
 		this.approved = bar.getApproved();
+		this.aadharCardFilePath = bar.getAadharCardFilePath();
 	}
 	
 	public AccountDTO() {

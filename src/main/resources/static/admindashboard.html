@@ -19,7 +19,7 @@ $( document ).ready(function() {
 			
 			/* alert(JSON.stringify(res)); */
 			/* var r= '<input type="button" value="Approve"/>'; */
-			var html = "<table><caption>Account Details</caption><tr><th>Title</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Father Name</th><th>Mobile No</th><th>Email ID</th><th>AadharCard No</th><th>DOB</th><th>Residential Address</th><th>Permanent Address</th><th>Occupation</th><th>BARID</th><th>Approved</th><th>Approve It</th></tr>";
+			var html = "<table><caption>Account Details</caption><tr><th>Title</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Father Name</th><th>Mobile No</th><th>Email ID</th><th>AadharCard No</th><th>DOB</th><th>Residential Address</th><th>Permanent Address</th><th>Occupation</th><th>BARID</th><th>Approved</th><th>View Aadhar</th><th>Approve It</th></tr>";
 			
 		    for (var i = 0; i < res.length; i++) {
 			       html+="<tr>";
@@ -37,7 +37,8 @@ $( document ).ready(function() {
 			       html+="<td>"+res[i].occupation+"</td>";
 			       html+="<td>"+res[i].barid+"</td>";
 			       html+="<td>"+res[i].approved+"</td>";
-			       html+="<td>"+'<input type="button" class="verifybutton" id='+res[i].barid+' value="Approve"/>'+"</td>";
+html+="<td>"+'<a href="../uploads/'+res[i].aadharCardFilePath+'">Check</a>'+"</td>";			       
+html+="<td>"+'<input type="button" class="verifybutton" id='+res[i].barid+' value="Approve"/>'+"</td>";
 			       html+="</tr>";
 			}
 			    html+="</table>";

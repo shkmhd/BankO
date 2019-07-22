@@ -44,7 +44,9 @@ public class BankAccountRequest {
 	private String occupation;
 	@Column(name = "APPROVED")
 	private String approved;
+
 	
+	private String aadharCardFilePath;
 	
 	public int getBARid() {
 		return BARid;
@@ -130,6 +132,13 @@ public class BankAccountRequest {
 	public void setApproved(String approved) {
 		this.approved = approved;
 	}
+	public String getAadharCardFilePath() {
+		return aadharCardFilePath;
+	}
+	public void setAadharCardFilePath(String aadharCardFilePath) {
+		this.aadharCardFilePath = aadharCardFilePath;
+	}
+	
 	public BankAccountRequest(int bARid, String title, String firstName, String middleName, String lastName,
 			String fatherName, long mobileNo, String emailId, long aadharCardNo, Date dOB, Integer residentialAddress,
 			Integer permenantAddress, String occupation, String approved) {

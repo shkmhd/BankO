@@ -55,7 +55,7 @@ public class AdminApprovalService {
 		message.setFrom("Rubina.Z@lntinfotech.com");
 		message.setTo(email);
 		message.setSubject("Regd. Your Bank Account Request");
-		message.setText("Dear Customer,"+System.getProperty("line.separator")+ " Congrats!"+System.getProperty("line.separator")+"Your Application for a Bank Account at BangBank has been accepted."+System.getProperty("line.separator")+"Your New Account Number is :"+nbacc.getAccnumber()+System.getProperty("line.separator")+"Thank You for Banking with us!");
+		message.setText("Dear Customer,"+System.getProperty("line.separator")+System.getProperty("line.separator")+ "Congrats!"+System.getProperty("line.separator")+"Your Application for a Bank Account at BangBank has been accepted."+System.getProperty("line.separator")+"Your New Account Number is :"+nbacc.getAccnumber()+System.getProperty("line.separator")+System.getProperty("line.separator")+"Thank You for Banking with us!");
 		mailSender.send(message);
 		
 	}

@@ -18,7 +18,7 @@ public class AccountOpenController {
 	private AccountOpenService accountOpenService;
 	
 	@RequestMapping(path= "/accountopen", method=RequestMethod.POST)
-	public void accountopen(@RequestBody BankAccountDTO accountDto) {
+	public void accountopen(BankAccountDTO accountDto) {
 		System.out.println(accountDto.getDOB());
 		System.out.println(accountDto.getMobileNo());
 		accountOpenService.accountopen(accountDto);

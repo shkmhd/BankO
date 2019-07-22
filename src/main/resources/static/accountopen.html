@@ -3,98 +3,157 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Account Open</title>
+<style>
+div.some-class {
+    display: block;
+}
+</style>
 <script src= "https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 $(function() {
 	$("#accountregistration").submit(function(evt){
-		evt.preventDefault();
-		var obj ={
-				firstName: $("#fName").val(),
-				middleName: $("#mName").val(),
-				lastName: $("#lName").val(),
-				fatherName: $("#fathName").val(),
-				mobileNo: $("#mobileNo").val(),
-				emailId: $("#emailId").val(),
-				aadharCardNo: $("#adhNumber").val(),
-				DOB: $("#dob").val()
 		
-		}
-          
+		evt.preventDefault();
+		
+		
+			formdata = new FormData();
+			
+			formdata.append("title",$("#select option:selected").val());
+			formdata.append("firstName",$("#fName").val());
+			formdata.append("middleName",$("#mName").val());		
+			formdata.append("lastName",$("#lName").val());
+			formdata.append("fatherName",$("#fathName").val());
+			formdata.append("mobileNo",$("#mobileNo").val());
+			formdata.append("emailId",$("#emailId").val());
+			formdata.append("aadharCardNo",$("#adhNumber").val());
+			formdata.append("resAddrLine1",$("#resAddr1").val());
+			formdata.append("resAddrLine2",$("#resAddr2").val());
+			formdata.append("resLandMark",$("#resLandMark").val());
+			formdata.append("resState",$("#resState").val());
+			formdata.append("resCity",$("#resCity").val());
+			formdata.append("resPinCode",$("#resPinCode").val());
+			formdata.append("perAddrLine1",$("#perAddr1").val());
+			formdata.append("perAddrLine2",$("#perAddr2").val());
+			formdata.append("perLandMark",$("#perLandMark").val());
+			formdata.append("perState",$("#perState").val());
+			formdata.append("perCity",$("#perCity").val());
+			formdata.append("perPinCode",$("#perPinCode").val());
+			formdata.append("checkBox",$("#checkId").val());
+			
+			formdata.append("occType",$("#occType").val());
+			
+			formdata.append("aadharCard",$("#aadharCard").get(0).files[0]);
+			
 		$.ajax({
 			url :'/accountopen',
 			method : 'POST',
-			data : JSON.stringify(obj),
-			contentType : 'application/json',
+			data : formdata,
+			processData:false,
+			contentType : false,
 			
 			success : function(response) {
+				
 				alert(JSON.stringify(response));
-				
 			}
-				
-		})
+		})		
+	})
 })
-})
-
+</script>
+<script>
+$(document).ready(function() {
+	
+    var visible = true;
+    
+    $('input[name="sg"]').click(function() {
+        var divs = $('div.some-class'); 
+        if (visible) {
+            divs.each(function() {
+                this.style.display = 'none';
+            });
+            visible = false;
+        }
+        else {
+            divs.each(function() {
+                this.style.display = 'block';
+            });
+            visible = true;
+        }
+    });
+});
 </script>
 </head>
 <body>
 <h2>Open A Savings Account</h2>
 <h2>Personal Details</h2>
-<form id="accountregistration" >
-<!-- <label>Title:</label>
-	<select>
+<form id="accountregistration">
+ <label>Title:</label>
+	<select id="select">
+		<option value="Miss">Miss</option>
 		<option value="Mr">Mr</option>
 		<option value="Mrs">Mrs</option>
-	</select><br/> -->
+		<option value="Shri">Shri</option>
+		<option value="Smt">Smt</option>
+		
+	</select><br/>
 <label>First Name:</label>
-	<input type="text" id="fName" placeholder="Enter your First name" /><br/>
+	<input type="text" id="fName" placeholder="Enter your First name" required/><br/>
 <label>Middle Name:</label>
-	<input type="text" id="mName" placeholder="Enter your Middle name" ><br/>
+	<input type="text" id="mName" placeholder="Enter your Middle name" required/><br/>
 <label>Last Name:</label>
-	<input type="text" id="lName" placeholder="Enter your Last name" /><br/>
+	<input type="text" id="lName" placeholder="Enter your Last name" required/><br/>
 <label>Father's Name:</label>
-	<input type="text" id="fathName" placeholder="Enter your Father's name" /><br/>
+	<input type="text" id="fathName" placeholder="Enter your Father's name" required/><br/>
 <label>Mobile Number:</label>
-	<input type="number" id="mobileNo" placeholder="Enter your Mobile Number"/><br/>
+	<input type="number" id="mobileNo" placeholder="Enter your Mobile Number" required/><br/>
 <label>Email ID:</label>
-	<input type="email" id="emailId" placeholder="Enter your Mail ID"/><br/>
+	<input type="email" id="emailId" placeholder="Enter your Mail ID" required/><br/>
 <label>Aadhar Card Number:</label>
-	<input type="number" id="adhNumber" placeholder="Enter your AadharCard Number" /><br/>
+	<input type="number" id="adhNumber" placeholder="Enter your AadharCard Number" required/><br/>
 <label>Date of Birth:</label>
-	<input type="date" id="dob" placeholder="Enter your Date Of Birth"/><br/>
-<!-- <h3>Residential Address:</h3>
+	<input type="date" id="dob" placeholder="Enter your Date Of Birth" required/><br/>
+<h3>Residential Address:</h3>
 <label class="required">a)Address Line1:</label>
-	<input type="text" name="resAddr1"/><br/>
-<label class="required">b)Address Line1:</label>
-	<input type="text" name="resAddr2"/><br/>
-<label>c)State</label>
- 	<input type="text" name="state"/><br/>
-<label>d)City</label>
- 	<input type="text" name="city"/><br/>	
-<label>e)PinCode</label>
- 	<input type="text" name="pincode"/><br/> 
+	<input type="text"	id="resAddr1" required/><br/>
+<label class="required">b)Address Line2:</label>
+	<input type="text" id="resAddr2" required/><br/>
+<label>c)Landmark</label>
+	<input type="text" id="resLandMark" required/><br/>
+<label>d)State</label>
+ 	<input type="text" id="resState" required/><br/>
+<label>e)City</label>
+ 	<input type="text" id="resCity" required/><br/>	
+<label>f)PinCode</label>
+ 	<input type="number" id="resPinCode" required/><br/> 
+ 	
+
+<input type="checkbox" name="sg" id="checkId"/>Permanent Address same as Mailing Address</br>
+<div class="some-class">
 <h3>Permanent Address:</h3>
-<input type="checkbox"/>Permanent Address same as Mailing Address</br>
 <label class="required">a)Address Line1:</label>
-	<input type="text" name="resAddr1"/><br/>
-<label class="required">b)Address Line1:</label>
-	<input type="text" name="resAddr2"/><br/>
-<label>c)State</label>
- 	<input type="text" name="state"/><br/>
-<label>d)City</label>
- 	<input type="text" name="city"/><br/>	
-<label>e)PinCode</label>
- 	<input type="text" name="pincode"/><br/>
+	<input class="permadd" type="text" id="perAddr1" /><br/>
+<label class="required">b)Address Line2:</label>
+	<input class="permadd" type="text" id="perAddr2" /><br/>
+<label>c)Landmark</label>
+	<input class="permadd" type="text" id="perLandMark" /><br/>
+<label>d)State</label>
+ 	<input type="text" id="perState" /><br/>
+<label>e)City</label>
+ 	<input class="permadd" type="text" id="perCity" /><br/>	
+<label>f)PinCode</label>
+ 	<input class="permadd" type="number" id="perPinCode" /><br/>
+ 	</div>
  <h3>Occupation Details</h3>
-<label class="required">a)Occupation Type:</label>
-	<input type="text" name="occType"/><br/>
-<label class="required">b)Source of Income:</label>
-	<input type="text" name="souofIncome"/><br/>
+<label class="required">Occupation Type:</label>
+	<input type="text" id="occType" required/><br/>
+<!-- <label class="required">b)Source of Income:</label>
+	<input type="text" id="souofIncome"/><br/>
 <label class="required">c)Gross Annual Income:</label>
-	<input type="text" name="groAnnIncome"/><br/> -->
-<input type="checkbox"/>I agree</br>
+	<input type="text" id="groAnnIncome"/><br/> --> 
+<label>Upload Your AadharCard*</label>
+	<input type="file" name="fup" id="aadharCard" required/><br/>
+<input type="checkbox" />I agree</br>
 <button type="submit">Submit</button>
-<style>
+<style>	
 	.required input: after {content :"*";}
 </style>
 </form>
