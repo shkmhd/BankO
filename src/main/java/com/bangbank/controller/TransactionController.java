@@ -3,7 +3,7 @@ package com.bangbank.controller;
 import java.io.InputStream;
 import java.util.Map;
 
-import org.apache.commons.codec.digest.DigestUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

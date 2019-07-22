@@ -15,23 +15,65 @@
 	}
 
 </style>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 
+<script type="text/javascript">
+function Validate() {
+    var password = document.getElementById("bacno").value;
+    var confirmPassword = document.getElementById("reacno").value;
+    if (password != confirmPassword) {
+        alert("Account Numbers do not match.");
+        return false;
+    }
+    return true;
+}
+</script>
+
+<script>
+$(function() {
+	$("#beneficiary").submit(
+			function(evt) {
+				evt.preventDefault();
+				var obj = {
+					benaccnumber : $("#bacno").val(),
+					nickName : $("#nicknme").val(),
+					accnumber :sessionStorage.getItem("LoggedInAccNo")
+				}
+				$.ajax({
+					url : '/BeneficiaryAdd',
+					type : 'POST',
+					data : JSON.stringify(obj),
+					contentType : 'application/json',
+					success : function(response) {
+						//if(response.password==password)
+						if (response.stat == "true") {
+							alert("Succesfully Created Benefeciary");
+						} else {
+							alert(response.stat);
+							
+						}
+					}
+				})
+			})
+})
+</script>
 </head>
-<body background="banking.jpg">
+<!-- <body background="banking.jpg"> -->
 
 <center>
 
 <div class="container">
-<form id="beneficiary" action="/beneficiary">
+<form id="beneficiary" >
 
 <div class="form-group">
 
 <h2>Add New Beneficiary</h2><br>
-<div class="form-group">
+<!-- <div class="form-group">
 <label><h5>Beneficiary Name</h5></label> <br> 
 
 	<input type="text"  class="form-control" id="nme"  name="bName"/><br/> 
-	</div>
+	</div> -->
 	
 <div class="form-group">
 <label ><h5>Beneficiary Account Number</h5></label> <br> 
@@ -41,7 +83,7 @@
 <div class="form-group">
 <label><h5>Re-Enter Account Number</h5></label><br>
 	<input type="text"  class="form-control" id="reacno"  name="reAccNo"/><br/>
-<input type="checkbox"/><h4>Save Beneficiary</h4><br/> 
+<!-- <input type="checkbox"/><h4>Save Beneficiary</h4><br/>  -->
 </div>
 
 <div class="form-group">
@@ -49,7 +91,7 @@
 	<input type="text"  class="form-control" id="nicknme" name="nicName"/><br/> 
 </div>	
 
-<button type="submit" class="btn btn-primary"">Save As Beneficiary</button>
+<button type="submit" onclick="return Validate()" class="btn btn-primary"">Save As Beneficiary</button>
 
 </button>
 

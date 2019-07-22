@@ -1,6 +1,7 @@
 package com.bangbank.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -52,6 +53,8 @@ import org.hibernate.annotations.GeneratorType;
 		private double balance;
 		@OneToOne(mappedBy = "bankAccount")
 		private OnlineAccount oa;
+		@OneToMany(mappedBy = "bankAccount")
+		private List<Beneficiary> lob;
 		public long getAccnumber() {
 			return accnumber;
 		}

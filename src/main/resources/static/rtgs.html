@@ -5,13 +5,38 @@
 <title>Fund Transfer RTGS Mode</title>
 <script  src="https://code.jquery.com/jquery-3.4.1.js"  type="text/javascript"></script>
 <script>
+$( document ).ready(function() {
+	var obj={
+			loggedInAccNo: sessionStorage.getItem("LoggedInAccNo")
+	}
+    $.ajax({
+		url : '/GetBene',
+		context: document.body,
+		type : 'POST',
+		data:JSON.stringify(obj),
+		contentType : 'application/json',
+		success : function(response) {
+			    
+			    var options =  ''; //create your "title" option
+			    $(response).each(function(index, value){ //loop through your elements
+			            options += '<option value="'+value.benaccnumber+'">'+value.nickName+'</option>'; //add the option element as a string
+			    });
+
+			    $('.Beneficiary').html(options); //replace the selection's html with the new options
+			
+	}
+    });
+});
+
+</script>
+<script>
 $(function(){
 	$("#rtgs").submit(function(evt){
 		evt.preventDefault();
 		var td=new Date();
 		var obj = {
-					frmAccNo : $("#frmAcc").val(),
-					toAccNo : $("#toAcc").val(),
+					frmAccNo : sessionStorage.getItem("LoggedInAccNo"),
+					toAccNo : $('.Beneficiary').find(":selected").val(),
 					amt    : $("#amt").val(),
 					trnDate : td,
 					matInst : $("#matInst").val(),
@@ -36,10 +61,14 @@ $(function(){
 <body>
 <form id="rtgs">
 <h2>Initiate RTGS Payment</h2>
-<label>From Account-</label>
-	<input type="text" id="frmAcc"/></br>
-<label>To Account-</label>
-	<input type="text" id="toAcc"/></br>
+<!-- <label>From Account-</label>
+	<input type="text" id="frmAcc"/></br> -->
+<label>To Beneficiary</label>
+	<select class="Beneficiary">
+	</select>
+	<div>
+	No Beneficiaries? <a href="beneficiary.html">Add one</a> now.
+	</div>
 <label>Amount-</label>
 	<input type="text" id="amt"/></br>
 <!-- <label>Transaction Date-</label>

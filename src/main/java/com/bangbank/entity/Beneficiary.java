@@ -10,14 +10,18 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GeneratorType;
 
+import com.bangbank.dto.BeneficiaryDTO;
+
 @Entity
-@Table(name="Beneficiary_TBL")
+@Table(name="TBL_BENEFICIARY")
 public class Beneficiary {
 	
 	@Id
 	@GeneratedValue
 	@Column(name = "BENEFICIARY_ID")
 	private int beneficiaryId;
+	@Column(name = "BENEFICIARY_ACC_NO")
+	private Long beneficiaryaccno;
 	@Column(name = "TITLE")
 	private String title;
 	@Column(name = "FIRST_NAME")
@@ -36,6 +40,12 @@ public class Beneficiary {
 	}
 	public void setBeneficiaryId(int beneficiaryId) {
 		this.beneficiaryId = beneficiaryId;
+	}
+	public Long getBeneficiaryaccno() {
+		return beneficiaryaccno;
+	}
+	public void setBeneficiaryaccno(Long beneficiaryaccno) {
+		this.beneficiaryaccno = beneficiaryaccno;
 	}
 	public String getTitle() {
 		return title;
@@ -61,10 +71,10 @@ public class Beneficiary {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public BankAccount getAccount() {
+	public BankAccount getBankAccount() {
 		return bankAccount;
 	}
-	public void setAccount(BankAccount bankAccount) {
+	public void setBankAccount(BankAccount bankAccount) {
 		this.bankAccount = bankAccount;
 	}
 	public String getNickName() {
@@ -73,16 +83,10 @@ public class Beneficiary {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	@Override
-	public String toString() {
-		return "Beneficiary [beneficiaryId=" + beneficiaryId + ", title=" + title + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName + ", account=" + bankAccount + ", nickName="
-				+ nickName + "]";
-	}
-	public Beneficiary(int beneficiaryId, String title, String firstName, String middleName, String lastName,
-			BankAccount bankAccount, String nickName) {
-		super();
+	public Beneficiary(int beneficiaryId, Long beneficiaryaccno, String title, String firstName, String middleName,
+			String lastName, BankAccount bankAccount, String nickName) {
 		this.beneficiaryId = beneficiaryId;
+		this.beneficiaryaccno = beneficiaryaccno;
 		this.title = title;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -91,7 +95,7 @@ public class Beneficiary {
 		this.nickName = nickName;
 	}
 	public Beneficiary() {
-		super();
 	}
+	
 	
 }
