@@ -57,7 +57,7 @@ $( document ).ready(function() {
 					contentType: 'application/json',
 					success :function(response){
 						sessionStorage.setItem('transactiondetail',JSON.stringify(response));
-						alert(JSON.stringify(response));
+						/* alert(JSON.stringify(response)); */
 						window.location.href = "/transferdetails.html";
 					}
 			})
