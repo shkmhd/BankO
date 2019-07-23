@@ -4,6 +4,9 @@
 <meta charset="ISO-8859-1">
 <title>Admin Dashboard Page</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
 $( document ).ready(function() {
@@ -19,7 +22,7 @@ $( document ).ready(function() {
 			
 			/* alert(JSON.stringify(res)); */
 			/* var r= '<input type="button" value="Approve"/>'; */
-			var html = "<table><caption>Account Details</caption><tr><th>Title</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Father Name</th><th>Mobile No</th><th>Email ID</th><th>AadharCard No</th><th>DOB</th><th>Residential Address</th><th>Permanent Address</th><th>Occupation</th><th>BARID</th><th>Approved</th><th>View Aadhar</th><th>Approve It</th></tr>";
+			var html = "<table><tr><th>Title</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Father Name</th><th>Mobile No</th><th>Email ID</th><th>AadharCard No</th><th>DOB</th><th>Residential Address</th><th>Permanent Address</th><th>Occupation</th><th>BARID</th><th>Approved</th><th>View Aadhar</th><th>Approve It</th></tr>";
 			
 		    for (var i = 0; i < res.length; i++) {
 			       html+="<tr>";
@@ -36,18 +39,18 @@ $( document ).ready(function() {
 			       html+="<td>"+res[i].permenantAddress+"</td>";
 			       html+="<td>"+res[i].occupation+"</td>";
 			       html+="<td>"+res[i].barid+"</td>";
-			       html+="<td>"+res[i].approved+"</td>";
-html+="<td>"+'<a href="../uploads/'+res[i].aadharCardFilePath+'">Check</a>'+"</td>";			       
-html+="<td>"+'<input type="button" class="verifybutton" id='+res[i].barid+' value="Approve"/>'+"</td>";
+			       html+="<td>"+res[i].approved+"</td>";	
+html+="<td>"+'<button type="button" class="btn btn-primary splclass" id="../uploads/'+res[i].aadharCardFilePath+'" data-toggle="modal" data-target="#exampleModal">View</button>'+"</td>";
+html+="<td>"+'<button type="button" class="btn btn-primary verifybutton" id='+res[i].barid+' value="Approve">'+'Approve'+"</button></td>";
 			       html+="</tr>";
 			}
 			    html+="</table>";
 			    $("#accdetailsdisplay").html(html);
 		}
 	})
-	$(document).on("click", "input.verifybutton" , function() {
+	$(document).on("click", "button.verifybutton" , function() {
 		/* console.log("Iam a dynamic button"); */
-		alert(this.id);
+		
 		
 		var obj={
 				barid : this.id
@@ -66,11 +69,39 @@ html+="<td>"+'<input type="button" class="verifybutton" id='+res[i].barid+' valu
 			}
 		}); 
     });
+	$(document).on("click", "button.splclass" , function() {
+		/* console.log("Iam a dynamic button"); */
+		/* alert(this.id); */
+		$("#myImage").attr("src",this.id);
+		
+		
+    });
 	
 })
 </script>
 </head>
 <body>
 <div id="accdetailsdisplay"></div>
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aadhar Card</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <img id="myImage" class="img-fluid"></img>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

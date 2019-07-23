@@ -2,10 +2,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css">
+<title>Beneficiary</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style type="text/css">
 
 .container{
@@ -59,16 +65,48 @@ $(function() {
 })
 </script>
 </head>
-<!-- <body background="banking.jpg"> -->
+<body style="background-image: url('bg.jpg'); background-size: 250px 250px; background-repeat:">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+		<a class="navbar-brand" href="#"> <img src="logo.png" alt=""
+			height="30px" width="30px"> trust bank
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarColor01" aria-controls="navbarColor01"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-<center>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item "><a class="nav-link" href="dashboard.html">Home
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="statement.html">Statement
+				</a></li>
+				<li class="nav-item "><a class="nav-link"
+					href="transfer.html">Transfer <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active"><a class="nav-link" href="beneficiary.html">Beneficiary <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="logout.html">Logout</a>
+				</li>
+			</ul>
+			<a class="nav-link bg-primary text-white" href="admin.html">Admin
+				Login</a>
+		</div>
+	</nav>
 
-<div class="container">
+
+
+<div class="card text-white bg-primary"
+		style="width: 21.5em;; margin: 20px auto 0 auto;">
+		<div class="card-body">
+			<div class="text-center">
 <form id="beneficiary" >
+
 
 <div class="form-group">
 
-<h2>Add New Beneficiary</h2><br>
+<h2 class="text-white">Add New Beneficiary</h2><br>
 <!-- <div class="form-group">
 <label><h5>Beneficiary Name</h5></label> <br> 
 
@@ -76,18 +114,18 @@ $(function() {
 	</div> -->
 	
 <div class="form-group">
-<label ><h5>Beneficiary Account Number</h5></label> <br> 
+<label ><h5 class="text-white">Beneficiary Account Number</h5></label> <br> 
 	<input type="number"  class="form-control" id="bacno" name="bAccNo"/><br/>
 </div>
 	
 <div class="form-group">
-<label><h5>Re-Enter Account Number</h5></label><br>
+<label><h5 class="text-white">Re-Enter Account Number</h5></label><br>
 	<input type="text"  class="form-control" id="reacno"  name="reAccNo"/><br/>
 <!-- <input type="checkbox"/><h4>Save Beneficiary</h4><br/>  -->
 </div>
 
 <div class="form-group">
-<label><h5>Nick Name</h5></label><br>
+<label><h5 class="text-white">Nick Name</h5></label><br>
 	<input type="text"  class="form-control" id="nicknme" name="nicName"/><br/> 
 </div>	
 
@@ -95,6 +133,6 @@ $(function() {
 
 </button>
 
-</form> </div>
+</form> </div></div></div>
 </body>
 </html>

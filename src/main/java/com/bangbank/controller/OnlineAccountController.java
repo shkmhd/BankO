@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.bangbank.dto.AccountDTO;
 import com.bangbank.dto.OnlineAccountDto;
 import com.bangbank.dto.VerificationStatusDto;
 import com.bangbank.service.OnlineAccountService;
@@ -33,6 +33,11 @@ public class OnlineAccountController {
 		
 	return onlineAccountService.accountcheck(accno);
 	
+	}
+	@RequestMapping(path = "/accountdetails",method = RequestMethod.POST)
+	public AccountDTO accountDetails(@RequestBody AccountDTO ac) {
+		
+		return onlineAccountService.getAccDetails(ac.getAccId());
 	}
 	
 

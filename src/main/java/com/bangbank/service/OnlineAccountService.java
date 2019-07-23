@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bangbank.dao.AccountDao;
 import com.bangbank.dao.OnlineAccountDao;
-
+import com.bangbank.dto.AccountDTO;
 import com.bangbank.dto.OnlineAccountDto;
 import com.bangbank.dto.VerificationStatusDto;
 import com.bangbank.entity.BankAccount;
@@ -50,4 +50,13 @@ public class OnlineAccountService {
 			return new VerificationStatusDto("success");
 			}
 }
+public AccountDTO getAccDetails(long accId) {
+		
+		BankAccount ba=accountDao.fetchById(accId);
+		AccountDTO bd=new AccountDTO();
+		bd.setBalance(ba.getBalance());
+		bd.setFirstName(ba.getFirstName());
+		return bd;
+		
+	}
 }

@@ -3,6 +3,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>OTP</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 $( document ).ready(function() {
@@ -67,15 +76,22 @@ $(function() {
 })
 </script>
 </head>
-<body>
-<div id="yacc">Your Account No:</div>
-<div id="macc">Merchant Account No:</div>
-<div id="amount">Amount:</div>
+<body  style="background-image: url('bg.jpg'); background-size: 250px 250px;">
+<div class="card text-white bg-primary"
+		style="width: 35em;; margin: 20px auto 0 auto;">
+		<div class="card-body">
+			<div class="text-center">
+<div class="text-white" id="yacc">Your Account No:</div>
+<div class="text-white" id="macc">Merchant Account No:</div>
+<div class="text-white" id="amount">Amount:</div>
 <form id="otpform">
-<label>Enter OTP</label>
-<input id="otp" type="text"/>
-<input type="submit" value="Submit"/>
+<label class="text-white">Enter OTP</label>
+<input class="form-control" id="otp" type="text"/>
+<br>
+<input class="form-control" type="submit" value="Submit"/>
 </form>
-
+</div>
+</div>
+</div>
 </body>
 </html>

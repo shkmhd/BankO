@@ -3,8 +3,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>BangBank Payment Gateway</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 	//Read a page's GET URL variables and return them as an associative array.
@@ -65,21 +72,28 @@ $(function() {
 })
 </script></script>
 </head>
-<body>
-<div class="jumbotron text-center">
+<body style="background-image: url('bg.jpg'); background-size: 250px 250px;">
+<div class="card text-white bg-primary"
+		style="width: 35em;; margin: 20px auto 0 auto;">
+		<div class="card-body">
+<div class="text-center">
 		<form id="login">
-			<div class="alert alert-light" role="alert">
-				<h1>Login to your Account</h1>
-				<br /> <br /> <label>User ID:</label> <input type="number"
+			<div>
+				<h1 class="text-white">Login to your Account</h1>
+				<br /> <br /> <label class="text-white">User ID:</label> <input class="form-control" type="number"
 					placeholder="Enter Account no" id="accno"   pattern="[A-Za-z]{3}" required /><br /> <br />
-				<label>Password:</label> <input type="password"
+				<label class="text-white">Password:</label> <input class="form-control" type="password"
 					placeholder="Enter password" id="password"  pattern="^([a-zA-Z0-9@*#]{8-15})$" required/><br />
 			</div>
+			<br>
 			<button type="submit" class="btn btn-primary">Login</button>
 			<!-- <br /> <br /> <a href="register.html">First Time User? register</a><br /> -->
 			<!-- <a href="ForgetUserID.html">Forget User ID</a><br /> <a
 				href="forgetpassword.html">First Time User? register</a><br /> -->
 		</form>
 	</div>
+	</div>
+	</div>
+	
 </body>
 </html>

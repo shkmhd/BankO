@@ -2,8 +2,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Get The Statement Of Your Account</title>
+<title>Statement</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous">
 <script type="text/javascript">
 $(function(){
 	
@@ -132,22 +135,60 @@ $(function(){
 })
 </script>
 </head>
-<body>
-	<h1>To Get The Statement Details</h1>
-	<form id="full">
-		<input type="submit" value="FullStatement" />
+<body style="background-image: url('bg.jpg');background-size: 250px 250px;background-repeat:">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+ <a class="navbar-brand" href="#">
+          <img src="logo.png" alt="" height="30px" width="30px">
+        trust bank
+        </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="dashboard.html">Home </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="statement.html">Statement <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="transfer.html">Transfer</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="beneficiary.html">Beneficiary </a>
+				</li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.html">Logout</a>
+      </li>
+    </ul>
+    	 <a class="nav-link bg-primary text-white" href="admin.html">Admin Login</a>
+  </div>
+</nav>
+<div class="card text-white bg-primary" style="width: 21.5em;  margin: 30px auto 0 auto;">
+					<div class="card-body">
+						<div class="text-center">
+	<h5 class="text-white">To generate the full statement</h5>
+	<form class="text-white" id="full">
+		<input type="submit" class="btn btn-primary"value="Click Here" />
+	</form><br>
+	<h5 class="text-white">To generate the mini statement</h5>
+	<form class="text-white" id="mini">
+		<input class="btn btn-primary" type="submit" value="Click Here" />
 	</form>
-	<form id="mini">
-		<input type="submit" value="MiniStatement" />
-	</form>
-	<form id="btwndate">
-		<label>From Date</label>
-		<input type="date" id="startdate"></input> 
-		<label>To Date</label>
-		<input type="date"id="enddate"></input> 
+	<br>
+	<h5 class="text-white">To generate statement of transactions between dates</h5>
+	<form class="text-white" id="btwndate">
+		<label class="text-white">From Date</label>
+		<input class="form-control" type="date" id="startdate"></input> 
+		<label class="text-white">To Date</label>
+		<input class="form-control" type="date"id="enddate"></input> 
 			
-			<input type="submit" value="BetweenDates" />
+			<button  type="submit"  class="btn btn-primary" value="Generate" >Generate</button>
 	</form>
 	<div id="divFrm"></div>
+	</div>
+	</div>
+	</div>
 </body>
 </html>
