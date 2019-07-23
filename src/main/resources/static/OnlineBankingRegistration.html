@@ -27,8 +27,9 @@ $(function(){
 			data: JSON.stringify(obj),	//The Data we want ot Send
 			contentType: 'application/json',
 			success :function(response){
-			
-				alert(JSON.stringify(response));
+				alert("Online Account has been created. You can Now Login with your Credentials");
+				window.location.replace('login.html');
+				/* alert(JSON.stringify(response)); */
 			}
 		})
 	})

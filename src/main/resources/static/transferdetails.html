@@ -10,7 +10,7 @@
 <script>
 $( document ).ready(function() {
 	var obj = JSON.parse(sessionStorage.getItem("transactiondetail"));       
-	
+	$("#transdetails").append($("<div></div>").text('Transaction Status :'+obj.trnStat));
 	$("#transdetails").append($("<div></div>").text('Transaction ID :'+obj.transactionID));
 	$("#transdetails").append($("<div></div>").text('From Acc No :'+obj.frmAccNo));
 	$("#transdetails").append($("<div></div>").text('To Acc No :'+obj.toAccNo));
@@ -57,7 +57,7 @@ $( document ).ready(function() {
 					<div class="card-body">
 						<div class="text-center">
   
-<h2 class="text-white">Transfer Successful</h2>
+<h2 class="text-white">Transfer Details</h2>
 <div class="text-white" id="transdetails">
 </div>
 </body>

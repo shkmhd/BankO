@@ -23,16 +23,18 @@ $(function(){
 			method	: 'GET',
 			success :function(response){
 			
-				alert(JSON.stringify(response));
+				/* alert(JSON.stringify(response)); */
 				if(response.stat==="success")
 				{
-					alert(accno);
+					/* alert(accno); */
 					sessionStorage.setItem("checkaccno",accno);
+					
 					window.location.href = "OnlineBankingRegistration.html";
 				
 				}
 				else{
-				alert(JSON.stringify(response.stat));
+				/* alert(JSON.stringify(response.stat)); */
+				alert("It appears you do not have an account with us. Redirecting to the Account Registration Page")
 				window.location.href = "accountopen.html";
 				}
 
@@ -58,7 +60,7 @@ $(function(){
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item "><a class="nav-link" href="accountopen.html">Apply For Bank Account
 				</a></li>
-				<li class="nav-item active"><a class="nav-link" href="OnlineBankingRegistration.html">Register for Online Banking
+				<li class="nav-item active"><a class="nav-link" href="OnlineBankingRegistrationCheck.html">Register for Online Banking
 				<span class="sr-only">(current)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="login.html">Login </a>
 				</li>

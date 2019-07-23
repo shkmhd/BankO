@@ -23,17 +23,17 @@ public class BankTransactionService {
 	 */
 	@Autowired
 	TransactionDao txnDao;
-	
+
 	/*
 	 * @Autowired private AccountDao accDao;
 	 */
 	@Autowired
 	private AccountDao accDao;
-	
+
 	public TransactionDTO transfer(TransactionDTO transaction,String TransactionMode) {	
-		
-		
-	
+
+
+
 		Long frmaccno = transaction.getFrmAccNo();
 		Long toaccno=transaction.getToAccNo();
 		BankAccount acc1 = accDao.fetchById(frmaccno);
@@ -44,28 +44,28 @@ public class BankTransactionService {
 			System.out.println("Sorry!No Sufficient Funds are available");
 			transaction.setTrnStat("failed");
 			return transaction;
-		
+
 		}
-		
+
 		else
-			{
+		{
 			acc1.setBalance(acc1.getBalance() - transaction.getAmt());
 			acc2.setBalance(acc2.getBalance() + transaction.getAmt());
-			
+
 			accDao.addToDataBase(acc1);
 			accDao.addToDataBase(acc2);
-			
+
 			transaction.setMode(TransactionMode);
 			Transaction dbtxn=new Transaction(transaction,acc1);
 			Transaction dbtxnreturned=txnDao.addToDataBase(dbtxn);
 			transaction.setTransactionID(dbtxnreturned.getTransactionId());
 			transaction.setTrnStat("Succesful");
 			return transaction;
-			
-			
-			}
-		
-		
+
+
+		}
+
+
 	}
-	
+
 }
