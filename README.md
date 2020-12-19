@@ -1,2 +1,2 @@
 ## Bang! Bank!
-POC Online banking application built using Spring. Implements RESTful api for payment gateway.
+POC Spring boot online banking application with a RESTful API for transactions. Supports otp generation over email.
